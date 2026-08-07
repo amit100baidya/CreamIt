@@ -3,105 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Sweet Crumbs Bakery</title>
+    <meta name="description" content="Learn about Sweet Crumbs Bakery — our story, values, and the passionate team behind every handcrafted loaf, cake, and pastry since 2020.">
+    <title>About Us — Sweet Crumbs Bakery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Sweet Crumbs Bakery</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+    <!-- ═══ Navbar ═══ -->
+    <header class="nav nav--transparent" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-icon">🍰</span>
+                <span class="nav__logo-text">Sweet Crumbs</span>
+            </a>
+            <nav class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="menu.html" class="nav__link">Menu</a></li>
+                    <li><a href="about.html" class="nav__link active">About</a></li>
+                    <li><a href="contact.html" class="nav__link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="nav__actions">
+                <button class="nav__action-btn" id="search-toggle" aria-label="Search">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="nav__action-btn" id="cart-toggle" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav__badge" id="cart-count">0</span>
+                </button>
+                <button class="nav__action-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- About Hero -->
-    <section class="hero">
-        <div class="container">
-            <h2>About Sweet Crumbs Bakery</h2>
-            <p>Where passion meets perfection in every bite</p>
+    <!-- ═══ About Hero ═══ -->
+    <section class="hero hero--mini" id="hero">
+        <div class="hero__bg">
+            <img src="images/bakery-interior.png" alt="Inside Sweet Crumbs Bakery" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__badge">✦ Est. 2020</span>
+            <h1 class="hero__title">Our Story</h1>
+            <p class="hero__subtitle">Where passion meets perfection in every bite</p>
         </div>
     </section>
 
-    <!-- About Content -->
-    <section class="about-content">
+    <!-- ═══ Our Story ═══ -->
+    <section class="section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Our Story</h2>
-                    <p>Founded in 2020, Sweet Crumbs Bakery has been dedicated to creating delicious, high-quality baked goods that bring joy to our community. What started as a small family passion has grown into a beloved local institution.</p>
-                    <p>We believe that great baking is about more than just ingredients—it's about the love, care, and attention to detail that goes into every loaf, cake, and pastry we create.</p>
+            <div class="about-split">
+                <div class="about-split__text reveal-left">
+                    <h2>Baked With Love Since 2020</h2>
+                    <p>Founded in 2020, Sweet Crumbs Bakery has been dedicated to creating delicious, high-quality baked goods that bring joy to our community. What started as a small family passion project in a tiny kitchen has grown into a beloved local institution.</p>
+                    <p>We believe that great baking is about more than just ingredients — it's about the love, care, and attention to detail that goes into every loaf, cake, and pastry we create. Our bakers arrive before dawn each day to ensure everything is fresh and ready for you.</p>
+                    <p>From birthday cakes to wedding masterpieces, from your morning croissant to a cozy loaf of sourdough — we pour our hearts into every single thing we bake.</p>
                 </div>
-                <div class="about-image">
-                    <div class="placeholder-large">🏪 Our Bakery</div>
-                </div>
-            </div>
-
-            <div class="values">
-                <h2>Our Values</h2>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon">🌾</div>
-                        <h3>Quality Ingredients</h3>
-                        <p>We use only the finest, freshest ingredients in all our baked goods.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">❤️</div>
-                        <h3>Made with Love</h3>
-                        <p>Every item is crafted with passion and attention to detail.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">🌱</div>
-                        <h3>Sustainability</h3>
-                        <p>We're committed to eco-friendly practices and local sourcing.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">👨‍👩‍👧‍👦</div>
-                        <h3>Community</h3>
-                        <p>Supporting our local community through events and partnerships.</p>
-                    </div>
+                <div class="about-split__image reveal-right">
+                    <img src="images/bakery-interior.png" alt="Inside our bakery" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- ═══ Stats ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Sweet Crumbs Bakery</h3>
-                    <p>Freshly baked goods made with love since 2020</p>
+            <div class="stats reveal">
+                <div class="stat">
+                    <div class="stat__number" data-count="5" data-suffix="+">0</div>
+                    <div class="stat__label">Years of Baking</div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="stat">
+                    <div class="stat__number" data-count="15000" data-suffix="+">0</div>
+                    <div class="stat__label">Happy Customers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number" data-count="50" data-suffix="+">0</div>
+                    <div class="stat__label">Unique Recipes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number" data-count="12">0</div>
+                    <div class="stat__label">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Our Values ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header reveal">
+                <h2 class="section__title">Our Values</h2>
+                <p class="section__subtitle">The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid stagger-children">
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🌾</div>
+                    <h3 class="value-card__title">Quality Ingredients</h3>
+                    <p class="value-card__text">We source the finest organic flour, farm-fresh eggs, and premium chocolate. No shortcuts, no compromises.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">❤️</div>
+                    <h3 class="value-card__title">Made with Love</h3>
+                    <p class="value-card__text">Every item is handcrafted with passion and meticulous attention to detail by our skilled bakers.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🌱</div>
+                    <h3 class="value-card__title">Sustainability</h3>
+                    <p class="value-card__text">We're committed to eco-friendly practices, minimal waste, and supporting local farmers and suppliers.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="value-card__title">Community First</h3>
+                    <p class="value-card__text">We proudly support our local community through events, partnerships, and charitable donations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Meet the Team ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section__header reveal">
+                <h2 class="section__title">Meet Our Team</h2>
+                <p class="section__subtitle">The passionate people behind every delicious bite</p>
+            </div>
+            <div class="values-grid stagger-children">
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👩‍🍳</div>
+                    <h3 class="value-card__title">Maria Rodriguez</h3>
+                    <p class="value-card__text">Head Baker & Founder. Classically trained pastry chef with 15 years of experience and a passion for innovation.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👨‍🍳</div>
+                    <h3 class="value-card__title">James Park</h3>
+                    <p class="value-card__text">Bread Artisan. Sourdough specialist who perfects every loaf with patience, precision, and old-world techniques.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🎨</div>
+                    <h3 class="value-card__title">Ava Chen</h3>
+                    <p class="value-card__text">Cake Designer. Turns celebration cakes into edible works of art — from weddings to birthdays and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="quiz-banner">
+        <div class="container">
+            <div class="quiz-banner__content reveal">
+                <h2 class="quiz-banner__title">Ready to Taste the Difference?</h2>
+                <p class="quiz-banner__subtitle">Visit us today or order online — fresh-baked happiness awaits!</p>
+                <a href="menu.html" class="btn btn--primary btn--lg">View Our Menu →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="index.html" class="nav__logo" style="margin-bottom: var(--space-sm); display: inline-flex;">
+                        <span class="nav__logo-icon">🍰</span>
+                        <span class="nav__logo-text" style="color: white;">Sweet Crumbs</span>
+                    </a>
+                    <p class="footer__brand-text">Freshly baked goods made with love since 2020.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="Facebook">𝕗</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="menu.html">Menu</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📧 info@sweetcrumbs.com</p>
-                    <p>📍 123 Bakery Street, Sweet City</p>
+                <div>
+                    <h4 class="footer__title">Hours</h4>
+                    <ul class="footer__links">
+                        <li>Mon–Fri: 7AM – 7PM</li>
+                        <li>Sat–Sun: 8AM – 6PM</li>
+                        <li style="margin-top: var(--space-sm);">📍 123 Bakery Street</li>
+                        <li>Sweet City, SC 12345</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__title">Stay Updated</h4>
+                    <p class="footer__newsletter-text">Subscribe for exclusive deals and new flavors!</p>
+                    <form class="footer__newsletter-form" onsubmit="event.preventDefault(); Toast.show('Subscribed! 🎉', 'success'); this.reset();">
+                        <input type="email" class="footer__newsletter-input" placeholder="Your email" required>
+                        <button type="submit" class="footer__newsletter-btn">Join</button>
+                    </form>
                 </div>
             </div>
-            <p class="copyright">© 2025 Sweet Crumbs Bakery | All Rights Reserved</p>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2025 Sweet Crumbs Bakery. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="var(--text-muted)" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="search-box__input" placeholder="Search cakes, pastries, breads...">
+                <button class="search-box__voice" aria-label="Voice search">
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </button>
+                <button class="search-close nav__action-btn" aria-label="Close" onclick="Search.close()">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="search-results" style="display:none; margin-top: var(--space-sm); background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-sm); max-height: 400px; overflow-y: auto; box-shadow: var(--shadow-lg);"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__header">
+            <h3 class="cart-sidebar__title">Your Cart 🛒</h3>
+            <button class="cart-sidebar__close nav__action-btn" onclick="Cart.toggleSidebar()">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="cart-sidebar__items">
+            <div class="cart-empty"><div class="cart-empty__icon">🛒</div><p>Your cart is empty</p></div>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-sidebar__total">
+                <span class="cart-sidebar__total-label">Total</span>
+                <span class="cart-sidebar__total-value">$0.00</span>
+            </div>
+            <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="features.js"></script>
 </body>
 </html>
