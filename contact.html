@@ -3,135 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Sweet Crumbs Bakery</title>
+    <meta name="description" content="Contact Sweet Crumbs Bakery for custom orders, catering, inquiries, or just to say hello! Visit us at 123 Bakery Street, Sweet City.">
+    <title>Contact Us — Sweet Crumbs Bakery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Sweet Crumbs Bakery</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+    <!-- ═══ Navbar ═══ -->
+    <header class="nav nav--transparent" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-icon">🍰</span>
+                <span class="nav__logo-text">Sweet Crumbs</span>
+            </a>
+            <nav class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="menu.html" class="nav__link">Menu</a></li>
+                    <li><a href="about.html" class="nav__link">About</a></li>
+                    <li><a href="contact.html" class="nav__link active">Contact</a></li>
                 </ul>
             </nav>
+            <div class="nav__actions">
+                <button class="nav__action-btn" id="cart-toggle" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav__badge" id="cart-count">0</span>
+                </button>
+                <button class="nav__action-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Contact Hero -->
-    <section class="hero">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Get in touch for orders, inquiries, or just to say hello!</p>
+    <!-- ═══ Contact Hero ═══ -->
+    <section class="hero hero--mini" id="hero">
+        <div class="hero__bg">
+            <img src="images/hero.png" alt="Contact Sweet Crumbs Bakery" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__badge">✦ We'd Love to Hear From You</span>
+            <h1 class="hero__title">Get in Touch</h1>
+            <p class="hero__subtitle">Questions, custom orders, or just a friendly hello — we're here for you!</p>
         </div>
     </section>
 
-    <!-- Contact Content -->
-    <section class="contact-content">
+    <!-- ═══ Contact Info Cards ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Visit Us</h2>
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div>
-                            <h3>Address</h3>
-                            <p>123 Bakery Street<br>Sweet City, SC 12345</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>(555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>info@sweetcrumbs.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">🕒</div>
-                        <div>
-                            <h3>Hours</h3>
-                            <p>Mon-Fri: 7AM - 7PM<br>Sat-Sun: 8AM - 6PM</p>
-                        </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-2xl);" class="stagger-children">
+                <div class="contact-card reveal">
+                    <div class="contact-card__icon">📍</div>
+                    <div>
+                        <h3 class="contact-card__title">Visit Us</h3>
+                        <p class="contact-card__text">123 Bakery Street<br>Sweet City, SC 12345</p>
                     </div>
                 </div>
-
-                <div class="contact-form">
-                    <h2>Send us a Message</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone (Optional)</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="order">Custom Order</option>
-                                <option value="catering">Catering</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="general">General Inquiry</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
+                <div class="contact-card reveal">
+                    <div class="contact-card__icon">📞</div>
+                    <div>
+                        <h3 class="contact-card__title">Call Us</h3>
+                        <p class="contact-card__text">(555) 123-4567<br>Mon–Fri: 7AM – 7PM</p>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-card__icon">📧</div>
+                    <div>
+                        <h3 class="contact-card__title">Email Us</h3>
+                        <p class="contact-card__text">info@sweetcrumbs.com<br>We reply within 24 hours</p>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-card__icon">🕒</div>
+                    <div>
+                        <h3 class="contact-card__title">Hours</h3>
+                        <p class="contact-card__text">
+                            Mon–Fri: 7AM – 7PM<br>
+                            Sat–Sun: 8AM – 6PM
+                        </p>
+                        <span class="status-indicator status-indicator--open" id="open-status" style="margin-top: var(--space-xs);">
+                            <span class="status-indicator__dot"></span> Open Now
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Sweet Crumbs Bakery</h3>
-                    <p>Freshly baked goods made with love since 2020</p>
+    <!-- ═══ Contact Form ═══ -->
+    <section class="section">
+        <div class="container container--narrow">
+            <div class="section__header reveal">
+                <h2 class="section__title">Send Us a Message</h2>
+                <p class="section__subtitle">Whether it's a custom order, catering inquiry, or feedback — drop us a line!</p>
+            </div>
+            <form class="form reveal" id="contact-form" onsubmit="handleContactSubmit(event)">
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="name">Full Name *</label>
+                        <input class="form__input" type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="email">Email *</label>
+                        <input class="form__input" type="email" id="email" name="email" placeholder="you@email.com" required>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="phone">Phone (Optional)</label>
+                        <input class="form__input" type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="subject">Subject *</label>
+                        <select class="form__select" id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="custom-order">Custom Order</option>
+                            <option value="catering">Catering</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="message">Message *</label>
+                    <textarea class="form__textarea" id="message" name="message" placeholder="Tell us what you need..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;" id="submit-btn">Send Message ✉️</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══ Map Placeholder ═══ -->
+    <section style="background: var(--bg-secondary); padding: var(--space-xl) 0;">
+        <div class="container">
+            <div class="reveal" style="height: 350px; background: linear-gradient(135deg, var(--accent-light), var(--bg-card)); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); flex-direction: column; gap: var(--space-sm);">
+                <span style="font-size: 3rem;">📍</span>
+                <h3 style="font-family: var(--font-heading); color: var(--text-primary);">123 Bakery Street, Sweet City</h3>
+                <p style="color: var(--text-muted); font-size: var(--fs-small);">Map integration available on request</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="index.html" class="nav__logo" style="margin-bottom: var(--space-sm); display: inline-flex;">
+                        <span class="nav__logo-icon">🍰</span>
+                        <span class="nav__logo-text" style="color: white;">Sweet Crumbs</span>
+                    </a>
+                    <p class="footer__brand-text">Freshly baked goods made with love since 2020.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="Facebook">𝕗</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="menu.html">Menu</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📧 info@sweetcrumbs.com</p>
-                    <p>📍 123 Bakery Street, Sweet City</p>
+                <div>
+                    <h4 class="footer__title">Hours</h4>
+                    <ul class="footer__links">
+                        <li>Mon–Fri: 7AM – 7PM</li>
+                        <li>Sat–Sun: 8AM – 6PM</li>
+                        <li style="margin-top: var(--space-sm);">📍 123 Bakery Street</li>
+                        <li>Sweet City, SC 12345</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__title">Stay Updated</h4>
+                    <p class="footer__newsletter-text">Subscribe for exclusive deals and new flavors!</p>
+                    <form class="footer__newsletter-form" onsubmit="event.preventDefault(); Toast.show('Subscribed! 🎉', 'success'); this.reset();">
+                        <input type="email" class="footer__newsletter-input" placeholder="Your email" required>
+                        <button type="submit" class="footer__newsletter-btn">Join</button>
+                    </form>
                 </div>
             </div>
-            <p class="copyright">© 2025 Sweet Crumbs Bakery | All Rights Reserved</p>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2025 Sweet Crumbs Bakery. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__header">
+            <h3 class="cart-sidebar__title">Your Cart 🛒</h3>
+            <button class="cart-sidebar__close nav__action-btn" onclick="Cart.toggleSidebar()">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="cart-sidebar__items">
+            <div class="cart-empty"><div class="cart-empty__icon">🛒</div><p>Your cart is empty</p></div>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-sidebar__total">
+                <span class="cart-sidebar__total-label">Total</span>
+                <span class="cart-sidebar__total-value">$0.00</span>
+            </div>
+            <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="features.js"></script>
+    <script>
+        // Contact form submission handler
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<div class="spinner" style="width:20px;height:20px;margin:0;border-width:2px;"></div>';
+            btn.disabled = true;
+
+            // Simulate sending
+            setTimeout(() => {
+                btn.innerHTML = '✓ Message Sent!';
+                btn.style.background = 'var(--success)';
+                Toast.show('Thank you! We\'ll get back to you soon 🎉', 'success');
+                document.getElementById('contact-form').reset();
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        }
+
+        // Open/Closed status
+        (function() {
+            const now = new Date();
+            const day = now.getDay(); // 0=Sun, 6=Sat
+            const hour = now.getHours();
+            let isOpen = false;
+
+            if (day >= 1 && day <= 5) {
+                isOpen = hour >= 7 && hour < 19;
+            } else {
+                isOpen = hour >= 8 && hour < 18;
+            }
+
+            const el = document.getElementById('open-status');
+            if (el) {
+                if (isOpen) {
+                    el.className = 'status-indicator status-indicator--open';
+                    el.innerHTML = '<span class="status-indicator__dot"></span> Open Now';
+                } else {
+                    el.className = 'status-indicator status-indicator--closed';
+                    el.innerHTML = '<span class="status-indicator__dot"></span> Closed';
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
