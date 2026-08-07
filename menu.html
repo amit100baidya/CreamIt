@@ -3,144 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Sweet Crumbs Bakery</title>
+    <meta name="description" content="Explore our full menu of artisan cakes, flaky pastries, and freshly baked breads. Order online from Sweet Crumbs Bakery.">
+    <title>Menu — Sweet Crumbs Bakery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Sweet Crumbs Bakery</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+    <!-- ═══ Glassmorphism Navbar ═══ -->
+    <header class="nav nav--transparent" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-icon">🍰</span>
+                <span class="nav__logo-text">Sweet Crumbs</span>
+            </a>
+            <nav class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="menu.html" class="nav__link active">Menu</a></li>
+                    <li><a href="about.html" class="nav__link">About</a></li>
+                    <li><a href="contact.html" class="nav__link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="nav__actions">
+                <button class="nav__action-btn" id="search-toggle" aria-label="Search">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="nav__action-btn" id="wishlist-toggle" aria-label="Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="nav__badge" id="wishlist-count">0</span>
+                </button>
+                <button class="nav__action-btn" id="cart-toggle" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav__badge" id="cart-count">0</span>
+                </button>
+                <button class="nav__action-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Menu Hero -->
-    <section class="hero">
-        <div class="container">
-            <h2>Our Delicious Menu</h2>
-            <p>Freshly baked goods for every craving</p>
+    <!-- ═══ Menu Hero ═══ -->
+    <section class="hero hero--mini" id="hero">
+        <div class="hero__bg">
+            <img src="images/hero.png" alt="Bakery menu display" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__badge">✦ Baked Fresh Daily</span>
+            <h1 class="hero__title">Our Delicious Menu</h1>
+            <p class="hero__subtitle">Freshly baked goods for every craving — from artisan breads to showstopping cakes</p>
         </div>
     </section>
 
-    <!-- Cakes Section -->
-    <section class="menu-category">
+    <!-- ═══ Menu Content ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2>Cakes</h2>
-            <div class="items">
-                <div class="card">
-                    <div class="card-icon">🍫</div>
-                    <h3>Chocolate Cake</h3>
-                    <p>Rich chocolate layers with ganache</p>
-                    <span class="price">$25</span>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🍓</div>
-                    <h3>Strawberry Cake</h3>
-                    <p>Fresh strawberries with vanilla buttercream</p>
-                    <span class="price">$28</span>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🧁</div>
-                    <h3>Red Velvet Cake</h3>
-                    <p>Classic red velvet with cream cheese frosting</p>
-                    <span class="price">$26</span>
+            <!-- Category Tabs -->
+            <div class="category-tabs reveal">
+                <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab" data-category="cakes">🎂 Cakes</button>
+                <button class="category-tab" data-category="pastries">🥐 Pastries</button>
+                <button class="category-tab" data-category="breads">🍞 Breads</button>
+            </div>
+
+            <!-- Occasion Tabs -->
+            <div class="category-tabs category-tabs--occasion reveal">
+                <button class="category-tab category-tab--sm" data-occasion="birthday">🎂 Birthday</button>
+                <button class="category-tab category-tab--sm" data-occasion="wedding">💒 Wedding</button>
+                <button class="category-tab category-tab--sm" data-occasion="anniversary">💕 Anniversary</button>
+                <button class="category-tab category-tab--sm" data-occasion="baby-shower">👶 Baby Shower</button>
+                <button class="category-tab category-tab--sm" data-occasion="graduation">🎓 Graduation</button>
+                <button class="category-tab category-tab--sm" data-occasion="corporate">🏢 Corporate</button>
+                <button class="category-tab category-tab--sm" data-occasion="festival">🎊 Festivals</button>
+            </div>
+
+            <!-- Compare + Surprise + Filter Toggle Buttons -->
+            <div style="display: flex; justify-content: center; gap: var(--space-sm); margin-bottom: var(--space-lg); flex-wrap: wrap;">
+                <button class="btn btn--ghost" id="filter-toggle-btn" onclick="AdvancedFilter.toggle()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+                    <span>Filters</span>
+                </button>
+                <button class="btn btn--ghost" id="compare-btn" style="display: none;" onclick="Compare.show()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                    <span>Compare (0)</span>
+                </button>
+                <button class="btn btn--primary" onclick="CakeBuilder.open()" style="border-radius: var(--radius-full); padding: 10px 22px;">🎂 Build Custom Cake</button>
+                <button class="btn btn--accent" id="surprise-btn" onclick="SurpriseMe.pick()" style="border-radius: var(--radius-full); padding: 10px 22px;">🎲 Surprise Me!</button>
+            </div>
+
+            <!-- Menu Layout: Sidebar + Grid -->
+            <div class="menu-layout">
+                <!-- Advanced Filter Sidebar -->
+                <aside class="filter-sidebar" id="filter-sidebar">
+                    <div class="filter-sidebar__header">
+                        <h3 class="filter-sidebar__title">🔍 Filters</h3>
+                        <button class="filter-sidebar__close" onclick="AdvancedFilter.toggle()">✕</button>
+                    </div>
+
+                    <!-- Active Filters -->
+                    <div class="filter-sidebar__active" id="active-filters" style="display: none;">
+                        <div class="filter-sidebar__active-list" id="active-filter-chips"></div>
+                        <button class="filter-sidebar__clear" onclick="AdvancedFilter.clearAll()">Clear All</button>
+                    </div>
+
+                    <!-- Flavor Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-group__title">Flavor</h4>
+                        <div class="filter-group__options" id="flavor-filters">
+                            <label class="filter-check"><input type="checkbox" value="chocolate" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🍫 Chocolate</label>
+                            <label class="filter-check"><input type="checkbox" value="vanilla" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🍦 Vanilla</label>
+                            <label class="filter-check"><input type="checkbox" value="fruit" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🍓 Fruit</label>
+                            <label class="filter-check"><input type="checkbox" value="caramel" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🍯 Caramel</label>
+                            <label class="filter-check"><input type="checkbox" value="coffee" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>☕ Coffee</label>
+                            <label class="filter-check"><input type="checkbox" value="butter" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🧈 Butter</label>
+                            <label class="filter-check"><input type="checkbox" value="nuts" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🥜 Nuts</label>
+                            <label class="filter-check"><input type="checkbox" value="assorted" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🎨 Assorted</label>
+                            <label class="filter-check"><input type="checkbox" value="classic" onchange="AdvancedFilter.apply()"><span class="filter-check__mark"></span>🌾 Classic</label>
+                        </div>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <h4 class="filter-group__title">Price Range</h4>
+                        <div class="filter-range">
+                            <input type="range" id="price-range" min="0" max="150" value="150" class="filter-range__slider" oninput="AdvancedFilter.apply()">
+                            <div class="filter-range__labels">
+                                <span>$0</span>
+                                <span id="price-range-val">$150</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dietary -->
+                    <div class="filter-group">
+                        <h4 class="filter-group__title">Dietary</h4>
+                        <div class="filter-group__options">
+                            <label class="filter-toggle-switch">
+                                <input type="checkbox" id="eggless-toggle" onchange="AdvancedFilter.apply()">
+                                <span class="filter-toggle-switch__slider"></span>
+                                <span class="filter-toggle-switch__label">🌿 Eggless Only</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Time -->
+                    <div class="filter-group">
+                        <h4 class="filter-group__title">Delivery Time</h4>
+                        <div class="filter-group__options">
+                            <label class="filter-check"><input type="radio" name="delivery" value="" checked onchange="AdvancedFilter.apply()"><span class="filter-check__mark filter-check__mark--radio"></span>Any</label>
+                            <label class="filter-check"><input type="radio" name="delivery" value="1" onchange="AdvancedFilter.apply()"><span class="filter-check__mark filter-check__mark--radio"></span>⚡ Under 1 hour</label>
+                            <label class="filter-check"><input type="radio" name="delivery" value="2" onchange="AdvancedFilter.apply()"><span class="filter-check__mark filter-check__mark--radio"></span>🕐 Under 2 hours</label>
+                            <label class="filter-check"><input type="radio" name="delivery" value="4" onchange="AdvancedFilter.apply()"><span class="filter-check__mark filter-check__mark--radio"></span>🕓 Under 4 hours</label>
+                            <label class="filter-check"><input type="radio" name="delivery" value="24" onchange="AdvancedFilter.apply()"><span class="filter-check__mark filter-check__mark--radio"></span>📦 Same Day</label>
+                        </div>
+                    </div>
+
+                    <!-- Sort By -->
+                    <div class="filter-group">
+                        <h4 class="filter-group__title">Sort By</h4>
+                        <select class="filter-select" id="sort-select" onchange="AdvancedFilter.apply()">
+                            <option value="default">Default</option>
+                            <option value="price-asc">Price: Low → High</option>
+                            <option value="price-desc">Price: High → Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+
+                    <!-- Results Count -->
+                    <div class="filter-sidebar__results" id="filter-results-count">
+                        Showing all 40 items
+                    </div>
+                </aside>
+
+                <!-- Product Grid Column -->
+                <div class="menu-layout__content">
+                    <div class="products-grid products-grid--wide stagger-children" id="products-grid">
+                        <!-- Rendered by CategoryFilter in features.js -->
+                    </div>
+
+                    <!-- Infinite Scroll Sentinel -->
+                    <div id="scroll-sentinel" style="height: 1px;"></div>
+                    <div id="load-more" style="text-align: center; padding: var(--space-lg); display: none;">
+                        <div class="spinner"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pastries Section -->
-    <section class="menu-category">
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
         <div class="container">
-            <h2>Pastries</h2>
-            <div class="items">
-                <div class="card">
-                    <div class="card-icon">🥐</div>
-                    <h3>Butter Croissant</h3>
-                    <p>Flaky and buttery, baked fresh daily</p>
-                    <span class="price">$4</span>
+            <div class="footer__grid">
+                <div>
+                    <a href="index.html" class="nav__logo" style="margin-bottom: var(--space-sm); display: inline-flex;">
+                        <span class="nav__logo-icon">🍰</span>
+                        <span class="nav__logo-text" style="color: white;">Sweet Crumbs</span>
+                    </a>
+                    <p class="footer__brand-text">Freshly baked goods made with love since 2020. Every loaf, cake, and pastry is handcrafted with the finest ingredients.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="Facebook">𝕗</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">♪</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🥧</div>
-                    <h3>Apple Pie</h3>
-                    <p>Cinnamon spiced apples in flaky crust</p>
-                    <span class="price">$15</span>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🍪</div>
-                    <h3>Chocolate Chip Cookies</h3>
-                    <p>Chewy cookies with premium chocolate chips</p>
-                    <span class="price">$2.50</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Breads Section -->
-    <section class="menu-category">
-        <div class="container">
-            <h2>Breads</h2>
-            <div class="items">
-                <div class="card">
-                    <div class="card-icon">🍞</div>
-                    <h3>Sourdough Bread</h3>
-                    <p>Artisan sourdough with crispy crust</p>
-                    <span class="price">$8</span>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🥖</div>
-                    <h3>Baguette</h3>
-                    <p>Traditional French baguette</p>
-                    <span class="price">$5</span>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🥨</div>
-                    <h3>Whole Wheat Bread</h3>
-                    <p>Healthy whole grain bread</p>
-                    <span class="price">$7</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Sweet Crumbs Bakery</h3>
-                    <p>Freshly baked goods made with love since 2020</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div>
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="menu.html">Menu</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p>📞 (555) 123-4567</p>
-                    <p>📧 info@sweetcrumbs.com</p>
-                    <p>📍 123 Bakery Street, Sweet City</p>
+                <div>
+                    <h4 class="footer__title">Hours</h4>
+                    <ul class="footer__links">
+                        <li>Mon–Fri: 7AM – 7PM</li>
+                        <li>Sat–Sun: 8AM – 6PM</li>
+                        <li style="margin-top: var(--space-sm);">📍 123 Bakery Street</li>
+                        <li>Sweet City, SC 12345</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__title">Stay Updated</h4>
+                    <p class="footer__newsletter-text">Subscribe for exclusive deals and new flavors!</p>
+                    <form class="footer__newsletter-form" onsubmit="event.preventDefault(); Toast.show('Subscribed! 🎉', 'success'); this.reset();">
+                        <input type="email" class="footer__newsletter-input" placeholder="Your email" required>
+                        <button type="submit" class="footer__newsletter-btn">Join</button>
+                    </form>
                 </div>
             </div>
-            <p class="copyright">© 2025 Sweet Crumbs Bakery | All Rights Reserved</p>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2025 Sweet Crumbs Bakery. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- ═══ Overlays & Modals ═══ -->
+    <!-- Search -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="var(--text-muted)" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="search-box__input" placeholder="Search cakes, pastries, breads...">
+                <button class="search-box__voice" aria-label="Voice search">
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </button>
+                <button class="search-close nav__action-btn" aria-label="Close" onclick="Search.close()">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="search-results" style="display:none; margin-top: var(--space-sm); background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-sm); max-height: 400px; overflow-y: auto; box-shadow: var(--shadow-lg);"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__header">
+            <h3 class="cart-sidebar__title">Your Cart 🛒</h3>
+            <button class="cart-sidebar__close nav__action-btn" onclick="Cart.toggleSidebar()">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="cart-sidebar__items">
+            <div class="cart-empty"><div class="cart-empty__icon">🛒</div><p>Your cart is empty</p></div>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-sidebar__total">
+                <span class="cart-sidebar__total-label">Total</span>
+                <span class="cart-sidebar__total-value">$0.00</span>
+            </div>
+            <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickview-modal">
+        <div class="modal" style="max-width: 800px;">
+            <button class="modal__close">✕</button>
+            <div class="modal__grid">
+                <div class="modal__image"><img src="" alt=""></div>
+                <div class="modal__details" style="max-height: 80vh; overflow-y: auto;">
+                    <span class="modal__category"></span>
+                    <h2 class="modal__title"></h2>
+                    <p class="modal__desc"></p>
+                    <p class="modal__price"></p>
+                    <div class="modal__quantity">
+                        <button class="modal__qty-btn modal__qty-minus">−</button>
+                        <span class="modal__qty-value">1</span>
+                        <button class="modal__qty-btn modal__qty-plus">+</button>
+                    </div>
+                    <button class="btn btn--primary modal__add-btn" style="width:100%; margin-bottom: var(--space-xl);">Add to Cart</button>
+                    
+                    <hr style="border: none; border-top: 1px solid var(--border); margin-bottom: var(--space-xl);">
+                    <!-- Reviews Container -->
+                    <div class="modal__reviews"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Quiz Modal ═══ -->
+    <div class="modal-overlay quiz-modal" id="quiz-modal">
+        <div class="modal" style="max-width: 600px;">
+            <button class="modal__close">✕</button>
+            <div style="padding: var(--space-xl);">
+                <h2 style="font-family: var(--font-heading); text-align: center; margin-bottom: var(--space-lg);">🧁
+                    Find Your Perfect Treat</h2>
+                <div class="quiz__content">
+                    <!-- Rendered by CakeQuiz -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Cake Builder Modal ═══ -->
+    <div class="modal-overlay" id="cake-builder-overlay">
+        <div class="modal cake-builder__content" style="max-width: 750px; padding: var(--space-2xl);">
+            <!-- Rendered by CakeBuilder -->
+        </div>
+    </div>
+
+    <!-- Compare Modal -->
+    <div class="modal-overlay" id="compare-modal">
+        <div class="modal" style="max-width: 950px;">
+            <button class="modal__close">✕</button>
+            <div style="padding: var(--space-xl);">
+                <h2 style="font-family: var(--font-heading); text-align: center; margin-bottom: var(--space-lg);">Compare Products</h2>
+                <div style="overflow-x: auto;"><table class="compare-table"></table></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Cart Bar -->
+    <div class="sticky-cart">
+        <div class="container sticky-cart__inner">
+            <div class="sticky-cart__info">
+                <span>🛒</span>
+                <span class="sticky-cart__count">0 items</span>
+                <span>•</span>
+                <span class="sticky-cart__total">$0.00</span>
+            </div>
+            <button class="btn btn--primary btn--sm" onclick="Cart.toggleSidebar()">View Cart</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="features.js"></script>
 </body>
 </html>
