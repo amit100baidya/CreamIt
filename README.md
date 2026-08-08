@@ -1,10 +1,10 @@
-# 🥐 Sweet Crumbs Bakery
+# 🥐 Cream It
 
-A modern, responsive bakery website designed to deliver a premium online experience for customers. Sweet Crumbs Bakery combines elegant design, smooth animations, and interactive features to create an engaging digital storefront for cakes, pastries, breads, and desserts.
+A modern, responsive bakery website designed to deliver a premium online experience for customers. Cream It combines elegant design, smooth animations, and interactive features to create an engaging digital storefront for cakes, pastries, breads, and desserts.
 
 ## 🌟 Overview
 
-Sweet Crumbs Bakery is built with a focus on clean UI, exceptional user experience, and responsive design. Inspired by leading bakery platforms while maintaining its own unique identity, the website showcases bakery products through beautiful visuals, interactive components, and modern web technologies.
+Cream It is built with a focus on clean UI, exceptional user experience, and responsive design. Inspired by leading bakery platforms while maintaining its own unique identity, the website showcases bakery products through beautiful visuals, interactive components, and modern web technologies.
 
 ---
 
