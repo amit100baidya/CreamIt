@@ -1,4 +1,4 @@
-/* ===== Sweet Crumbs Bakery — Interactive Features ===== */
+/* ===== Cream It Bakery — Interactive Features ===== */
 
 // ─── Product Data (Expanded Catalog) ───
 const PRODUCTS = [
