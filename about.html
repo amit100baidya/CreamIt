@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Cream It Bakery — Artisan cakes, pastries, and breads handcrafted daily with the finest ingredients. Order online for pickup or delivery.">
-    <meta name="keywords" content="bakery, cakes, pastries, bread, cupcakes, artisan, fresh, order online">
-    <title>Cream It Bakery — Freshly Baked Happiness Every Day</title>
+    <meta name="description" content="Learn about Cream It Bakery — our story, values, and the passionate team behind every handcrafted loaf, cake, and pastry since 2020.">
+    <title>About Us — Cream It Bakery</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCSY62Y8E"></script>
     <script>
@@ -18,66 +15,35 @@
         gtag('config', 'G-KYCSY62Y8E');
     </script>
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
-
 <body>
 
-    <!-- ═══ Glassmorphism Navbar ═══ -->
+    <!-- ═══ Navbar ═══ -->
     <header class="nav nav--transparent" id="main-nav">
         <div class="nav__inner">
             <a href="index.html" class="nav__logo">
                 <span class="nav__logo-icon">🍰</span>
                 <span class="nav__logo-text">Cream It</span>
             </a>
-
             <nav class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link active">Home</a></li>
+                    <li><a href="index.html" class="nav__link">Home</a></li>
                     <li><a href="menu.html" class="nav__link">Menu</a></li>
-                    <li><a href="about.html" class="nav__link">About</a></li>
+                    <li><a href="about.html" class="nav__link active">About</a></li>
                     <li><a href="contact.html" class="nav__link">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="nav__actions">
                 <button class="nav__action-btn" id="search-toggle" aria-label="Search">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                </button>
-                <button class="nav__action-btn" id="wishlist-toggle" aria-label="Wishlist">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                    </svg>
-                    <span class="nav__badge" id="wishlist-count">0</span>
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
                 <button class="nav__action-btn" id="cart-toggle" aria-label="Cart">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                    </svg>
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                     <span class="nav__badge" id="cart-count">0</span>
                 </button>
                 <button class="nav__action-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <svg class="moon-icon" viewBox="0 0 24 24">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                    <svg class="sun-icon" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -86,224 +52,126 @@
         </div>
     </header>
 
-    <!-- ═══ Full-Screen Cinematic Hero ═══ -->
-    <section class="hero" id="hero">
+    <!-- ═══ About Hero ═══ -->
+    <section class="hero hero--mini" id="hero">
         <div class="hero__bg">
-            <img src="images/hero.png" alt="Premium bakery display with artisan cakes and pastries" loading="eager">
+            <img src="images/bakery-interior.png" alt="Inside Cream It Bakery" loading="eager">
         </div>
         <div class="hero__overlay"></div>
         <div class="hero__content">
-            <span class="hero__badge">✦ Artisan Bakery Since 2020</span>
-            <h1 class="hero__title">Freshly Baked<br>Happiness Every Day</h1>
-            <p class="hero__subtitle">Indulge in handcrafted cakes, pastries, and breads made with love and the finest
-                ingredients. Perfect for every moment.</p>
-            <div class="hero__buttons">
-                <a href="menu.html" class="btn btn--primary btn--lg">Explore Menu</a>
-                <button class="btn btn--secondary btn--lg" onclick="CakeBuilder.open()"
-                    style="border-color: rgba(255,255,255,0.4); color: white;">🎂 Build Custom Cake</button>
-                <button class="btn btn--secondary btn--lg" onclick="CakeQuiz.open()"
-                    style="border-color: rgba(255,255,255,0.4); color: white;">Take the Quiz ✨</button>
-            </div>
-        </div>
-        <div class="hero__scroll">
-            <span>Scroll</span>
-            <div class="hero__scroll-line"></div>
+            <span class="hero__badge">✦ Est. 2020</span>
+            <h1 class="hero__title">Our Story</h1>
+            <p class="hero__subtitle">Where passion meets perfection in every bite</p>
         </div>
     </section>
 
-    <!-- ═══ Best Sellers ═══ -->
-    <section class="section" id="bestsellers" style="background: var(--bg-secondary);">
+    <!-- ═══ Our Story ═══ -->
+    <section class="section">
         <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">🏆 Best Sellers</h2>
-                <p class="section__subtitle">Our most loved items — customer favorites you can't go wrong with</p>
-            </div>
-            <div id="bestsellers-row" class="reveal">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Occasion Collections ═══ -->
-    <section class="section" id="occasions">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">Cakes for Every Occasion</h2>
-                <p class="section__subtitle">Find the perfect treat for your special moment</p>
-            </div>
-            <div class="occasion-grid stagger-children" id="occasion-grid">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Signature Delights ═══ -->
-    <section class="section" id="products" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">Our Signature Delights</h2>
-                <p class="section__subtitle">Handcrafted with passion using locally sourced, premium ingredients</p>
-            </div>
-            <div class="products-grid products-grid--wide stagger-children" id="home-products-grid">
-                <!-- Rendered by features.js -->
-            </div>
-            <div style="text-align: center; margin-top: var(--space-xl);" class="reveal">
-                <a href="menu.html" class="btn btn--secondary">View Full Menu →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Trending Now ═══ -->
-    <section class="section" id="trending">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">🔥 Trending Now</h2>
-                <p class="section__subtitle">What everyone's ordering this week</p>
-            </div>
-            <div id="trending-row" class="reveal">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Seasonal Specials Banner ═══ -->
-    <section class="seasonal-section" id="seasonal-banner">
-        <!-- Rendered by JS -->
-    </section>
-
-    <!-- ═══ New Arrivals ═══ -->
-    <section class="section" id="new-arrivals" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">✨ New Arrivals</h2>
-                <p class="section__subtitle">Fresh additions to our menu — be the first to try them!</p>
-            </div>
-            <div id="new-arrivals-row" class="reveal">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Gallery ═══ -->
-    <section class="section" id="gallery">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">Our Bakery in Pictures</h2>
-                <p class="section__subtitle">A glimpse into our world of fresh-baked goodness</p>
-            </div>
-            <div class="gallery-grid reveal-scale">
-                <div class="gallery-grid__item">
-                    <img src="images/hero.png" alt="Bakery display with cakes" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Fresh Cakes</span></div>
+            <div class="about-split">
+                <div class="about-split__text reveal-left">
+                    <h2>Baked With Love Since 2020</h2>
+                    <p>Founded in 2020, Cream It Bakery has been dedicated to creating delicious, high-quality baked goods that bring joy to our community. What started as a small family passion project in a tiny kitchen has grown into a beloved local institution.</p>
+                    <p>We believe that great baking is about more than just ingredients — it's about the love, care, and attention to detail that goes into every loaf, cake, and pastry we create. Our bakers arrive before dawn each day to ensure everything is fresh and ready for you.</p>
+                    <p>From birthday cakes to wedding masterpieces, from your morning croissant to a cozy loaf of sourdough — we pour our hearts into every single thing we bake.</p>
                 </div>
-                <div class="gallery-grid__item">
-                    <img src="images/artisan-bread.png" alt="Artisan breads" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Artisan Breads</span></div>
-                </div>
-                <div class="gallery-grid__item">
-                    <img src="images/bakery-interior.png" alt="Bakery interior" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Our Bakery</span></div>
-                </div>
-                <div class="gallery-grid__item">
-                    <img src="images/macarons.png" alt="French macarons" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Macarons</span></div>
-                </div>
-                <div class="gallery-grid__item">
-                    <img src="images/brownies.png" alt="Fudge brownies" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Brownies</span></div>
-                </div>
-                <div class="gallery-grid__item">
-                    <img src="images/wedding-cake.png" alt="Wedding cake" loading="lazy">
-                    <div class="gallery-grid__overlay"><span>Wedding Cakes</span></div>
+                <div class="about-split__image reveal-right">
+                    <img src="images/bakery-interior.png" alt="Inside our bakery" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══ AI Cake Quiz Banner ═══ -->
+    <!-- ═══ Stats ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="stats reveal">
+                <div class="stat">
+                    <div class="stat__number" data-count="5" data-suffix="+">0</div>
+                    <div class="stat__label">Years of Baking</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number" data-count="15000" data-suffix="+">0</div>
+                    <div class="stat__label">Happy Customers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number" data-count="50" data-suffix="+">0</div>
+                    <div class="stat__label">Unique Recipes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number" data-count="12">0</div>
+                    <div class="stat__label">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Our Values ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header reveal">
+                <h2 class="section__title">Our Values</h2>
+                <p class="section__subtitle">The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid stagger-children">
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🌾</div>
+                    <h3 class="value-card__title">Quality Ingredients</h3>
+                    <p class="value-card__text">We source the finest organic flour, farm-fresh eggs, and premium chocolate. No shortcuts, no compromises.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">❤️</div>
+                    <h3 class="value-card__title">Made with Love</h3>
+                    <p class="value-card__text">Every item is handcrafted with passion and meticulous attention to detail by our skilled bakers.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🌱</div>
+                    <h3 class="value-card__title">Sustainability</h3>
+                    <p class="value-card__text">We're committed to eco-friendly practices, minimal waste, and supporting local farmers and suppliers.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="value-card__title">Community First</h3>
+                    <p class="value-card__text">We proudly support our local community through events, partnerships, and charitable donations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Meet the Team ═══ -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section__header reveal">
+                <h2 class="section__title">Meet Our Team</h2>
+                <p class="section__subtitle">The passionate people behind every delicious bite</p>
+            </div>
+            <div class="values-grid stagger-children">
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👩‍🍳</div>
+                    <h3 class="value-card__title">Maria Rodriguez</h3>
+                    <p class="value-card__text">Head Baker & Founder. Classically trained pastry chef with 15 years of experience and a passion for innovation.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">👨‍🍳</div>
+                    <h3 class="value-card__title">James Park</h3>
+                    <p class="value-card__text">Bread Artisan. Sourdough specialist who perfects every loaf with patience, precision, and old-world techniques.</p>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-card__icon">🎨</div>
+                    <h3 class="value-card__title">Ava Chen</h3>
+                    <p class="value-card__text">Cake Designer. Turns celebration cakes into edible works of art — from weddings to birthdays and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
     <section class="quiz-banner">
         <div class="container">
             <div class="quiz-banner__content reveal">
-                <h2 class="quiz-banner__title">Not Sure What to Order?</h2>
-                <p class="quiz-banner__subtitle">Take our quick quiz and discover your perfect baked treat in under 30
-                    seconds!</p>
-                <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap; justify-content: center;">
-                    <button class="btn btn--primary btn--lg" onclick="CakeQuiz.open()">🧁 Find My Perfect Treat</button>
-                    <button class="btn btn--secondary btn--lg" id="surprise-btn" onclick="SurpriseMe.pick()"
-                        style="border-color: rgba(255,255,255,0.4); color: white;">🎲 Surprise Me!</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Recommended For You ═══ -->
-    <section class="section" id="recommendations" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">Recommended For You</h2>
-                <p class="section__subtitle">Picks based on your taste — just for you</p>
-            </div>
-            <div id="recommendations-row" class="reveal">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Recently Viewed ═══ -->
-    <section class="section" id="recently-viewed">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">Recently Viewed</h2>
-                <p class="section__subtitle">Pick up where you left off</p>
-            </div>
-            <div id="recently-viewed-row" class="reveal">
-                <!-- Rendered by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══ Testimonials ═══ -->
-    <section class="section" id="testimonials" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section__header reveal">
-                <h2 class="section__title">What Our Customers Say</h2>
-                <p class="section__subtitle">Real stories from people who love Cream It</p>
-            </div>
-            <div class="testimonials-slider reveal">
-                <div class="testimonials-track">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__inner">
-                            <span class="testimonial-card__quote">"</span>
-                            <p class="testimonial-card__text">The best chocolate cake I've ever had! Cream It Bakery
-                                never disappoints. Every bite is pure heaven — the ganache is to die for.</p>
-                            <p class="testimonial-card__author">Sarah Johnson</p>
-                            <p class="testimonial-card__role">Regular Customer</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__inner">
-                            <span class="testimonial-card__quote">"</span>
-                            <p class="testimonial-card__text">Their croissants are perfection — flaky, buttery, and
-                                absolutely divine. I drive 30 minutes just to get my morning fix!</p>
-                            <p class="testimonial-card__author">Mike Chen</p>
-                            <p class="testimonial-card__role">Food Blogger</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__inner">
-                            <span class="testimonial-card__quote">"</span>
-                            <p class="testimonial-card__text">Our wedding cake was a masterpiece! The team went above
-                                and beyond to create something truly magical for our special day.</p>
-                            <p class="testimonial-card__author">Emily Davis</p>
-                            <p class="testimonial-card__role">Bride, 2024</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-dots">
-                    <button class="testimonials-dot active" aria-label="Slide 1"></button>
-                    <button class="testimonials-dot" aria-label="Slide 2"></button>
-                    <button class="testimonials-dot" aria-label="Slide 3"></button>
-                </div>
+                <h2 class="quiz-banner__title">Ready to Taste the Difference?</h2>
+                <p class="quiz-banner__subtitle">Visit us today or order online — fresh-baked happiness awaits!</p>
+                <a href="menu.html" class="btn btn--primary btn--lg">View Our Menu →</a>
             </div>
         </div>
     </section>
@@ -313,18 +181,15 @@
         <div class="container">
             <div class="footer__grid">
                 <div>
-                    <a href="index.html" class="nav__logo"
-                        style="margin-bottom: var(--space-sm); display: inline-flex;">
+                    <a href="index.html" class="nav__logo" style="margin-bottom: var(--space-sm); display: inline-flex;">
                         <span class="nav__logo-icon">🍰</span>
                         <span class="nav__logo-text" style="color: white;">Cream It</span>
                     </a>
-                    <p class="footer__brand-text">Freshly baked goods made with love since 2020. Every loaf, cake, and
-                        pastry is handcrafted with the finest ingredients.</p>
+                    <p class="footer__brand-text">Freshly baked goods made with love since 2020.</p>
                     <div class="footer__socials">
                         <a href="#" class="footer__social" aria-label="Facebook">𝕗</a>
                         <a href="#" class="footer__social" aria-label="Instagram">📷</a>
                         <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">♪</a>
                     </div>
                 </div>
                 <div>
@@ -347,9 +212,8 @@
                 </div>
                 <div>
                     <h4 class="footer__title">Stay Updated</h4>
-                    <p class="footer__newsletter-text">Subscribe for exclusive deals, new flavors, and bakery news!</p>
-                    <form class="footer__newsletter-form"
-                        onsubmit="event.preventDefault(); Toast.show('Subscribed! 🎉', 'success'); this.reset();">
+                    <p class="footer__newsletter-text">Subscribe for exclusive deals and new flavors!</p>
+                    <form class="footer__newsletter-form" onsubmit="event.preventDefault(); Toast.show('Subscribed! 🎉', 'success'); this.reset();">
                         <input type="email" class="footer__newsletter-input" placeholder="Your email" required>
                         <button type="submit" class="footer__newsletter-btn">Join</button>
                     </form>
@@ -365,141 +229,44 @@
         </div>
     </footer>
 
-    <!-- ═══ Search Overlay ═══ -->
+    <!-- Search Overlay -->
     <div class="search-overlay">
         <div class="search-container">
             <div class="search-box">
-                <svg viewBox="0 0 24 24" width="22" height="22" stroke="var(--text-muted)" fill="none" stroke-width="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="var(--text-muted)" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <input type="text" class="search-box__input" placeholder="Search cakes, pastries, breads...">
                 <button class="search-box__voice" aria-label="Voice search">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                        <line x1="12" y1="19" x2="12" y2="23" />
-                        <line x1="8" y1="23" x2="16" y2="23" />
-                    </svg>
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 </button>
-                <button class="search-close nav__action-btn" aria-label="Close search" onclick="Search.close()">
-                    <svg viewBox="0 0 24 24">
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
+                <button class="search-close nav__action-btn" aria-label="Close" onclick="Search.close()">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
-            <div class="search-results"
-                style="display:none; margin-top: var(--space-sm); background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-sm); max-height: 400px; overflow-y: auto; box-shadow: var(--shadow-lg);">
-            </div>
+            <div class="search-results" style="display:none; margin-top: var(--space-sm); background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-sm); max-height: 400px; overflow-y: auto; box-shadow: var(--shadow-lg);"></div>
         </div>
     </div>
 
-    <!-- ═══ Cart Sidebar ═══ -->
+    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-sidebar__header">
             <h3 class="cart-sidebar__title">Your Cart 🛒</h3>
             <button class="cart-sidebar__close nav__action-btn" onclick="Cart.toggleSidebar()">
-                <svg viewBox="0 0 24 24">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
         <div class="cart-sidebar__items">
-            <div class="cart-empty">
-                <div class="cart-empty__icon">🛒</div>
-                <p>Your cart is empty</p>
-            </div>
+            <div class="cart-empty"><div class="cart-empty__icon">🛒</div><p>Your cart is empty</p></div>
         </div>
         <div class="cart-sidebar__footer">
             <div class="cart-sidebar__total">
                 <span class="cart-sidebar__total-label">Total</span>
                 <span class="cart-sidebar__total-value">$0.00</span>
             </div>
-            <button class="btn btn--primary" style="width: 100%;"
-                onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
-        </div>
-    </div>
-
-    <!-- ═══ Quick View Modal ═══ -->
-    <div class="modal-overlay" id="quickview-modal">
-        <div class="modal" style="max-width: 800px;">
-            <button class="modal__close">✕</button>
-            <div class="modal__grid">
-                <div class="modal__image">
-                    <img src="" alt="">
-                </div>
-                <div class="modal__details" style="max-height: 80vh; overflow-y: auto;">
-                    <span class="modal__category"></span>
-                    <h2 class="modal__title"></h2>
-                    <p class="modal__desc"></p>
-                    <p class="modal__price"></p>
-                    <div class="modal__quantity">
-                        <button class="modal__qty-btn modal__qty-minus">−</button>
-                        <span class="modal__qty-value">1</span>
-                        <button class="modal__qty-btn modal__qty-plus">+</button>
-                    </div>
-                    <button class="btn btn--primary modal__add-btn" style="width: 100%; margin-bottom: var(--space-xl);">Add to Cart</button>
-                    
-                    <hr style="border: none; border-top: 1px solid var(--border); margin-bottom: var(--space-xl);">
-                    <!-- Reviews Container -->
-                    <div class="modal__reviews"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ Quiz Modal ═══ -->
-    <div class="modal-overlay quiz-modal" id="quiz-modal">
-        <div class="modal" style="max-width: 600px;">
-            <button class="modal__close">✕</button>
-            <div style="padding: var(--space-xl);">
-                <h2 style="font-family: var(--font-heading); text-align: center; margin-bottom: var(--space-lg);">🧁
-                    Find Your Perfect Treat</h2>
-                <div class="quiz__content">
-                    <!-- Rendered by CakeQuiz -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ Cake Builder Modal ═══ -->
-    <div class="modal-overlay" id="cake-builder-overlay">
-        <div class="modal cake-builder__content" style="max-width: 750px; padding: var(--space-2xl);">
-            <!-- Rendered by CakeBuilder -->
-        </div>
-    </div>
-
-    <!-- ═══ Compare Modal ═══ -->
-    <div class="modal-overlay" id="compare-modal">
-        <div class="modal" style="max-width: 950px;">
-            <button class="modal__close">✕</button>
-            <div style="padding: var(--space-xl);">
-                <h2 style="font-family: var(--font-heading); text-align: center; margin-bottom: var(--space-lg);">
-                    Compare Products</h2>
-                <div style="overflow-x: auto;">
-                    <table class="compare-table"></table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ Sticky Cart Bar ═══ -->
-    <div class="sticky-cart">
-        <div class="container sticky-cart__inner">
-            <div class="sticky-cart__info">
-                <span>🛒</span>
-                <span class="sticky-cart__count">0 items</span>
-                <span>•</span>
-                <span class="sticky-cart__total">$0.00</span>
-            </div>
-            <button class="btn btn--primary btn--sm" onclick="Cart.toggleSidebar()">View Cart</button>
+            <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
         </div>
     </div>
 
     <script src="app.js"></script>
     <script src="features.js"></script>
 </body>
-
 </html>
