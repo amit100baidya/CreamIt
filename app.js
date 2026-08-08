@@ -1,4 +1,4 @@
-/* ===== Sweet Crumbs Bakery — Core Application Logic ===== */
+/* ===== Cream It Bakery — Core Application Logic ===== */
 
 // ─── Dark / Light Mode ───
 const ThemeManager = {
