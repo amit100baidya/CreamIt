@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about Cream It Bakery — our story, values, and the passionate team behind every handcrafted loaf, cake, and pastry since 2020.">
     <title>About Us — Cream It Bakery</title>
+    <link rel="canonical" href="https://amit100baidya.github.io/CreamIt/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About Us — Cream It Bakery">
+    <meta property="og:description" content="Our story, values, and the passionate team behind every handcrafted baked good since 2020.">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCSY62Y8E"></script>
     <script>
@@ -64,6 +68,17 @@
             <p class="hero__subtitle">Where passion meets perfection in every bite</p>
         </div>
     </section>
+
+    <!-- ═══ Breadcrumbs ═══ -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item"><a href="index.html" class="breadcrumb__link">Home</a></li>
+                <li class="breadcrumb__separator" aria-hidden="true">›</li>
+                <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">About Us</li>
+            </ol>
+        </div>
+    </nav>
 
     <!-- ═══ Our Story ═══ -->
     <section class="section">
@@ -148,17 +163,17 @@
             <div class="values-grid stagger-children">
                 <div class="value-card reveal">
                     <div class="value-card__icon">👩‍🍳</div>
-                    <h3 class="value-card__title">Maria Rodriguez</h3>
+                    <h3 class="value-card__title">Head Baker <span class="demo-label">[Demo Name]</span></h3>
                     <p class="value-card__text">Head Baker & Founder. Classically trained pastry chef with 15 years of experience and a passion for innovation.</p>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-card__icon">👨‍🍳</div>
-                    <h3 class="value-card__title">James Park</h3>
+                    <h3 class="value-card__title">Bread Artisan <span class="demo-label">[Demo Name]</span></h3>
                     <p class="value-card__text">Bread Artisan. Sourdough specialist who perfects every loaf with patience, precision, and old-world techniques.</p>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-card__icon">🎨</div>
-                    <h3 class="value-card__title">Ava Chen</h3>
+                    <h3 class="value-card__title">Cake Designer <span class="demo-label">[Demo Name]</span></h3>
                     <p class="value-card__text">Cake Designer. Turns celebration cakes into edible works of art — from weddings to birthdays and beyond.</p>
                 </div>
             </div>
@@ -222,8 +237,8 @@
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 Cream It Bakery. All rights reserved.</p>
                 <div class="footer__legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -234,11 +249,11 @@
         <div class="search-container">
             <div class="search-box">
                 <svg viewBox="0 0 24 24" width="22" height="22" stroke="var(--text-muted)" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" class="search-box__input" placeholder="Search cakes, pastries, breads...">
+                <input type="text" class="search-box__input" placeholder="Search cakes, pastries, breads..." aria-label="Search products">
                 <button class="search-box__voice" aria-label="Voice search">
                     <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 </button>
-                <button class="search-close nav__action-btn" aria-label="Close" onclick="Search.close()">
+                <button class="search-close nav__action-btn" aria-label="Close search" onclick="Search.close()">
                     <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
@@ -260,13 +275,27 @@
         <div class="cart-sidebar__footer">
             <div class="cart-sidebar__total">
                 <span class="cart-sidebar__total-label">Total</span>
-                <span class="cart-sidebar__total-value">$0.00</span>
+                <span class="cart-sidebar__total-value">₹0</span>
             </div>
             <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
         </div>
     </div>
 
+    <!-- Mobile CTA -->
+    <div class="mobile-cta" id="mobile-cta" aria-label="Mobile quick actions">
+        <a href="menu.html" class="mobile-cta__btn" aria-label="Menu">🎂<span>Menu</span></a>
+        <button class="mobile-cta__btn" id="mobile-search-btn" aria-label="Search">🔍<span>Search</span></button>
+        <button class="mobile-cta__btn mobile-cta__cart" onclick="Cart.toggleSidebar()" aria-label="Cart">
+            🛒<span>Cart</span>
+            <span class="mobile-cta__cart-count" aria-live="polite"></span>
+        </button>
+        <a href="menu.html" class="mobile-cta__btn mobile-cta__order" aria-label="Order Now">✨<span>Order</span></a>
+    </div>
+
     <script src="app.js"></script>
     <script src="features.js"></script>
+    <script>
+        document.getElementById('mobile-search-btn')?.addEventListener('click', () => Search.open());
+    </script>
 </body>
 </html>
