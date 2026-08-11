@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore our full menu of artisan cakes, flaky pastries, and freshly baked breads. Order online from Cream It Bakery.">
+    <meta name="description" content="Explore our full menu of artisan cakes, flaky pastries, and freshly baked breads. Custom cakes for every occasion. Order online from Cream It Bakery.">
     <title>Menu — Cream It Bakery</title>
+    <link rel="canonical" href="https://amit100baidya.github.io/CreamIt/menu.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Menu — Cream It Bakery">
+    <meta property="og:description" content="Explore cakes, pastries, breads and more. Custom cakes for every occasion.">
+    <meta property="og:image" content="https://amit100baidya.github.io/CreamIt/images/hero.png">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCSY62Y8E"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-KYCSY62Y8E');
     </script>
     <link rel="stylesheet" href="style.css">
@@ -68,6 +72,17 @@
             <p class="hero__subtitle">Freshly baked goods for every craving — from artisan breads to showstopping cakes</p>
         </div>
     </section>
+
+    <!-- ═══ Breadcrumbs ═══ -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item"><a href="index.html" class="breadcrumb__link">Home</a></li>
+                <li class="breadcrumb__separator" aria-hidden="true">›</li>
+                <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Menu</li>
+            </ol>
+        </div>
+    </nav>
 
     <!-- ═══ Menu Content ═══ -->
     <section class="section" style="background: var(--bg-secondary);">
@@ -140,10 +155,10 @@
                     <div class="filter-group">
                         <h4 class="filter-group__title">Price Range</h4>
                         <div class="filter-range">
-                            <input type="range" id="price-range" min="0" max="150" value="150" class="filter-range__slider" oninput="AdvancedFilter.apply()">
+                            <input type="range" id="price-range" min="0" max="15000" value="15000" class="filter-range__slider" oninput="AdvancedFilter.apply()" aria-label="Maximum price filter">
                             <div class="filter-range__labels">
-                                <span>$0</span>
-                                <span id="price-range-val">$150</span>
+                                <span>₹0</span>
+                                <span id="price-range-val">₹15,000</span>
                             </div>
                         </div>
                     </div>
