@@ -1,56 +1,63 @@
 /* ===== Cream It Bakery — Interactive Features ===== */
+/* NOTE: All prices are in INR (₹). These are demo/sample prices for portfolio purposes. */
 
-// ─── Product Data (Expanded Catalog) ───
+// ─── Currency Utility ───
+function fmtINR(amount) {
+  return '₹' + Math.round(amount).toLocaleString('en-IN');
+}
+
+// ─── Product Data (Centralized — Single Source of Truth) ───
+// DEMO PRICING — Realistic Indian bakery price ranges for portfolio demonstration
 const PRODUCTS = [
   // ═══ CAKES ═══
-  { id: 1,  name: 'Chocolate Truffle Cake',  category: 'cakes', price: 25, image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png','images/chocolate-cake.png'], desc: 'Rich chocolate layers with silky ganache, gold leaf, and Belgian chocolate shavings', tag: 'Bestseller', flavor: 'chocolate', eggless: false, occasion: ['birthday','celebration','corporate'], bestseller: true,  trending: false, newArrival: false, rating: 4.9, reviewCount: 234, deliveryTime: '2h',  sizes: [{label:'500g',price:25},{label:'1kg',price:45},{label:'2kg',price:85}] },
-  { id: 2,  name: 'Butter Croissant',         category: 'pastries', price: 4,  image: 'images/croissant.png',  images: ['images/croissant.png'],  desc: 'Flaky, golden, buttery perfection baked fresh every morning',  tag: '', flavor: 'butter', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.7, reviewCount: 189, deliveryTime: '1h',  sizes: [{label:'1pc',price:4},{label:'4pc Box',price:14}] },
-  { id: 3,  name: 'Artisan Sourdough',         category: 'breads',  price: 8,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Handcrafted sourdough with a crispy crust and airy crumb — 48h ferment', tag: 'Fresh Daily', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: true,  newArrival: false, rating: 4.8, reviewCount: 145, deliveryTime: '2h',  sizes: [{label:'Small',price:8},{label:'Large',price:14}] },
-  { id: 4,  name: 'Vanilla Cupcakes',          category: 'cakes',   price: 3.50, image: 'images/cupcakes.png', images: ['images/cupcakes.png'],  desc: 'Gourmet cupcakes with silky vanilla buttercream in seasonal flavors', tag: '', flavor: 'vanilla', eggless: false, occasion: ['birthday','baby-shower'], bestseller: false, trending: true,  newArrival: false, rating: 4.6, reviewCount: 167, deliveryTime: '1h',  sizes: [{label:'1pc',price:3.50},{label:'Box of 6',price:18},{label:'Box of 12',price:34}] },
-  { id: 5,  name: 'Classic Apple Pie',          category: 'pastries', price: 15, image: 'images/apple-pie.png', images: ['images/apple-pie.png'], desc: 'Cinnamon-spiced apples in a flaky, buttery double crust — served warm', tag: 'Seasonal', flavor: 'fruit', eggless: false, occasion: ['festival','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 98,  deliveryTime: '3h',  sizes: [{label:'6 inch',price:15},{label:'9 inch',price:24}] },
-  { id: 6,  name: 'Chocolate Chip Cookies',     category: 'pastries', price: 2.50, image: 'images/cookies.png', images: ['images/cookies.png'],  desc: 'Chewy cookies loaded with premium 72% dark chocolate chunks', tag: '', flavor: 'chocolate', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 312, deliveryTime: '1h',  sizes: [{label:'1pc',price:2.50},{label:'Box of 6',price:13},{label:'Box of 12',price:24}] },
-  { id: 7,  name: 'Strawberry Dream Cake',      category: 'cakes',   price: 28, image: 'images/birthday-cake.png', images: ['images/birthday-cake.png'], desc: 'Fresh strawberries layered with vanilla swiss meringue buttercream', tag: 'New', flavor: 'fruit', eggless: false, occasion: ['birthday','anniversary'], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 56,  deliveryTime: '3h',  sizes: [{label:'500g',price:28},{label:'1kg',price:50},{label:'2kg',price:95}] },
-  { id: 8,  name: 'Red Velvet Cake',            category: 'cakes',   price: 26, image: 'images/red-velvet.png', images: ['images/red-velvet.png'], desc: 'Classic red velvet with tangy cream cheese frosting and velvet crumb coat', tag: '', flavor: 'vanilla', eggless: false, occasion: ['birthday','anniversary','wedding'], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 203, deliveryTime: '3h',  sizes: [{label:'500g',price:26},{label:'1kg',price:48},{label:'2kg',price:90}] },
-  { id: 9,  name: 'French Baguette',            category: 'breads',  price: 5,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Traditional French baguette with a crispy golden crust and open crumb', tag: '', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 87,  deliveryTime: '1h',  sizes: [{label:'1pc',price:5},{label:'3pc Bundle',price:13}] },
-  { id: 10, name: 'Whole Wheat Bread',          category: 'breads',  price: 7,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Healthy whole grain bread baked with organic flour — no preservatives', tag: 'Healthy', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.3, reviewCount: 64,  deliveryTime: '2h',  sizes: [{label:'400g',price:7},{label:'800g',price:12}] },
-  { id: 11, name: 'Cinnamon Rolls',             category: 'pastries', price: 5,  image: 'images/croissant.png', images: ['images/croissant.png'],  desc: 'Warm, gooey cinnamon rolls with cream cheese glaze — best served warm', tag: 'Popular', flavor: 'caramel', eggless: false, occasion: [], bestseller: true,  trending: true,  newArrival: false, rating: 4.9, reviewCount: 276, deliveryTime: '1h',  sizes: [{label:'1pc',price:5},{label:'Box of 4',price:18}] },
-  { id: 12, name: 'Tiramisu Cake',              category: 'cakes',   price: 32, image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png'], desc: 'Coffee-soaked ladyfinger layers with mascarpone cream and cocoa dusting', tag: 'Premium', flavor: 'coffee', eggless: false, occasion: ['anniversary','corporate','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.9, reviewCount: 178, deliveryTime: '4h',  sizes: [{label:'500g',price:32},{label:'1kg',price:58},{label:'2kg',price:110}] },
+  { id: 1,  name: 'Chocolate Truffle Cake',   category: 'cakes',    price: 599,  image: 'images/chocolate-cake.png',   images: ['images/chocolate-cake.png'], desc: 'Rich chocolate layers with silky ganache, gold leaf, and Belgian chocolate shavings', tag: 'Bestseller', flavor: 'chocolate', eggless: false, occasion: ['birthday','celebration','corporate'], bestseller: true,  trending: false, newArrival: false, rating: 4.9, reviewCount: 234, deliveryTime: '2h',  sizes: [{label:'500g',price:599},{label:'1kg',price:999},{label:'2kg',price:1799}] },
+  { id: 2,  name: 'Butter Croissant',          category: 'pastries', price: 99,   image: 'images/croissant.png',         images: ['images/croissant.png'],  desc: 'Flaky, golden, buttery perfection baked fresh every morning', tag: '', flavor: 'butter', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.7, reviewCount: 189, deliveryTime: '1h',  sizes: [{label:'1pc',price:99},{label:'4pc Box',price:349}] },
+  { id: 3,  name: 'Artisan Sourdough',          category: 'breads',   price: 249,  image: 'images/artisan-bread.png',    images: ['images/artisan-bread.png'], desc: 'Handcrafted sourdough with a crispy crust and airy crumb — 48h ferment', tag: 'Fresh Daily', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: true,  newArrival: false, rating: 4.8, reviewCount: 145, deliveryTime: '2h',  sizes: [{label:'Small',price:249},{label:'Large',price:399}] },
+  { id: 4,  name: 'Vanilla Cupcakes',           category: 'cakes',    price: 99,   image: 'images/cupcakes.png',          images: ['images/cupcakes.png'],  desc: 'Gourmet cupcakes with silky vanilla buttercream in seasonal flavors', tag: '', flavor: 'vanilla', eggless: false, occasion: ['birthday','baby-shower'], bestseller: false, trending: true,  newArrival: false, rating: 4.6, reviewCount: 167, deliveryTime: '1h',  sizes: [{label:'1pc',price:99},{label:'Box of 6',price:499},{label:'Box of 12',price:899}] },
+  { id: 5,  name: 'Classic Apple Pie',           category: 'pastries', price: 449,  image: 'images/apple-pie.png',        images: ['images/apple-pie.png'], desc: 'Cinnamon-spiced apples in a flaky, buttery double crust — served warm', tag: 'Seasonal', flavor: 'fruit', eggless: false, occasion: ['festival','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 98,  deliveryTime: '3h',  sizes: [{label:'6 inch',price:449},{label:'9 inch',price:699}] },
+  { id: 6,  name: 'Chocolate Chip Cookies',      category: 'pastries', price: 69,   image: 'images/cookies.png',          images: ['images/cookies.png'],  desc: 'Chewy cookies loaded with premium 72% dark chocolate chunks', tag: '', flavor: 'chocolate', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 312, deliveryTime: '1h',  sizes: [{label:'1pc',price:69},{label:'Box of 6',price:349},{label:'Box of 12',price:649}] },
+  { id: 7,  name: 'Strawberry Dream Cake',       category: 'cakes',    price: 699,  image: 'images/birthday-cake.png',   images: ['images/birthday-cake.png'], desc: 'Fresh strawberries layered with vanilla swiss meringue buttercream', tag: 'New', flavor: 'fruit', eggless: false, occasion: ['birthday','anniversary'], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 56,  deliveryTime: '3h',  sizes: [{label:'500g',price:699},{label:'1kg',price:1099},{label:'2kg',price:1999}] },
+  { id: 8,  name: 'Red Velvet Cake',             category: 'cakes',    price: 699,  image: 'images/red-velvet.png',       images: ['images/red-velvet.png'], desc: 'Classic red velvet with tangy cream cheese frosting and velvet crumb coat', tag: '', flavor: 'vanilla', eggless: false, occasion: ['birthday','anniversary','wedding'], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 203, deliveryTime: '3h',  sizes: [{label:'500g',price:699},{label:'1kg',price:1099},{label:'2kg',price:1999}] },
+  { id: 9,  name: 'French Baguette',             category: 'breads',   price: 149,  image: 'images/artisan-bread.png',   images: ['images/artisan-bread.png'], desc: 'Traditional French baguette with a crispy golden crust and open crumb', tag: '', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 87,  deliveryTime: '1h',  sizes: [{label:'1pc',price:149},{label:'3pc Bundle',price:399}] },
+  { id: 10, name: 'Whole Wheat Bread',           category: 'breads',   price: 199,  image: 'images/artisan-bread.png',   images: ['images/artisan-bread.png'], desc: 'Healthy whole grain bread baked with organic flour — no preservatives', tag: 'Healthy', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.3, reviewCount: 64,  deliveryTime: '2h',  sizes: [{label:'400g',price:199},{label:'800g',price:349}] },
+  { id: 11, name: 'Cinnamon Rolls',              category: 'pastries', price: 149,  image: 'images/croissant.png',        images: ['images/croissant.png'],  desc: 'Warm, gooey cinnamon rolls with cream cheese glaze — best served warm', tag: 'Popular', flavor: 'caramel', eggless: false, occasion: [], bestseller: true,  trending: true,  newArrival: false, rating: 4.9, reviewCount: 276, deliveryTime: '1h',  sizes: [{label:'1pc',price:149},{label:'Box of 4',price:549}] },
+  { id: 12, name: 'Tiramisu Cake',               category: 'cakes',    price: 899,  image: 'images/chocolate-cake.png',  images: ['images/chocolate-cake.png'], desc: 'Coffee-soaked ladyfinger layers with mascarpone cream and cocoa dusting', tag: 'Premium', flavor: 'coffee', eggless: false, occasion: ['anniversary','corporate','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.9, reviewCount: 178, deliveryTime: '4h',  sizes: [{label:'500g',price:899},{label:'1kg',price:1599},{label:'2kg',price:2999}] },
 
-  // ═══ NEW — CAKES ═══
-  { id: 13, name: 'Black Forest Cake',          category: 'cakes',   price: 28, image: 'images/black-forest.png', images: ['images/black-forest.png'], desc: 'Chocolate sponge with whipped cream, cherries, and dark chocolate shavings', tag: '', flavor: 'chocolate', eggless: false, occasion: ['birthday','celebration'], bestseller: false, trending: true,  newArrival: false, rating: 4.7, reviewCount: 142, deliveryTime: '3h',  sizes: [{label:'500g',price:28},{label:'1kg',price:52},{label:'2kg',price:98}] },
-  { id: 14, name: 'Pineapple Cake',             category: 'cakes',   price: 22, image: 'images/pineapple-cake.png', images: ['images/pineapple-cake.png'], desc: 'Light vanilla sponge with caramelized pineapple and whipped cream', tag: '', flavor: 'fruit', eggless: true, occasion: ['birthday','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 118, deliveryTime: '2h',  sizes: [{label:'500g',price:22},{label:'1kg',price:40},{label:'2kg',price:75}] },
-  { id: 15, name: 'New York Cheesecake',         category: 'cakes',   price: 30, image: 'images/cheesecake.png', images: ['images/cheesecake.png'], desc: 'Creamy baked cheesecake with buttery graham crust and berry compote', tag: 'Premium', flavor: 'vanilla', eggless: false, occasion: ['anniversary','celebration'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 95,  deliveryTime: '4h',  sizes: [{label:'6 inch',price:30},{label:'8 inch',price:48}] },
-  { id: 16, name: 'Wedding Elegance Cake',       category: 'cakes',   price: 120, image: 'images/wedding-cake.png', images: ['images/wedding-cake.png'], desc: '3-tier white fondant cake with fresh flowers and elegant sugar work', tag: 'Premium', flavor: 'vanilla', eggless: false, occasion: ['wedding'], bestseller: false, trending: false, newArrival: false, rating: 5.0, reviewCount: 47,  deliveryTime: '24h', sizes: [{label:'2-Tier',price:120},{label:'3-Tier',price:200},{label:'4-Tier',price:320}] },
-  { id: 17, name: 'Birthday Sprinkle Cake',      category: 'cakes',   price: 24, image: 'images/birthday-cake.png', images: ['images/birthday-cake.png'], desc: 'Fun rainbow sprinkle cake with buttercream swirls — includes candles!', tag: 'Popular', flavor: 'vanilla', eggless: false, occasion: ['birthday'], bestseller: true,  trending: true,  newArrival: false, rating: 4.8, reviewCount: 321, deliveryTime: '2h',  sizes: [{label:'500g',price:24},{label:'1kg',price:44},{label:'2kg',price:82}] },
-  { id: 18, name: 'Baby Shower Cake',            category: 'cakes',   price: 35, image: 'images/baby-shower-cake.png', images: ['images/baby-shower-cake.png'], desc: 'Adorable pastel cake with fondant baby booties and stars decoration', tag: 'New', flavor: 'vanilla', eggless: false, occasion: ['baby-shower'], bestseller: false, trending: false, newArrival: true,  rating: 4.9, reviewCount: 38,  deliveryTime: '6h',  sizes: [{label:'1kg',price:35},{label:'2kg',price:65},{label:'3kg',price:95}] },
-  { id: 19, name: 'Graduation Cap Cake',         category: 'cakes',   price: 30, image: 'images/graduation-cake.png', images: ['images/graduation-cake.png'], desc: 'Elegant graduation-themed cake with gold accents and fondant cap topper', tag: '', flavor: 'chocolate', eggless: false, occasion: ['graduation'], bestseller: false, trending: false, newArrival: true,  rating: 4.7, reviewCount: 29,  deliveryTime: '6h',  sizes: [{label:'1kg',price:30},{label:'2kg',price:55}] },
-  { id: 20, name: 'Eggless Chocolate Cake',      category: 'cakes',   price: 24, image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png'], desc: '100% eggless rich chocolate cake — same indulgent taste, no eggs!', tag: 'Eggless', flavor: 'chocolate', eggless: true, occasion: ['birthday','celebration'], bestseller: false, trending: true,  newArrival: false, rating: 4.6, reviewCount: 156, deliveryTime: '2h',  sizes: [{label:'500g',price:24},{label:'1kg',price:44},{label:'2kg',price:82}] },
-  { id: 21, name: 'Butterscotch Crunch Cake',    category: 'cakes',   price: 26, image: 'images/pineapple-cake.png', images: ['images/pineapple-cake.png'], desc: 'Butterscotch sponge with caramel praline crunch and toffee drizzle', tag: '', flavor: 'caramel', eggless: false, occasion: ['birthday','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 89,  deliveryTime: '3h',  sizes: [{label:'500g',price:26},{label:'1kg',price:48},{label:'2kg',price:88}] },
-  { id: 22, name: 'Mango Mousse Cake',           category: 'cakes',   price: 28, image: 'images/pineapple-cake.png', images: ['images/pineapple-cake.png'], desc: 'Light mango mousse on vanilla sponge — a tropical summer delight', tag: 'Seasonal', flavor: 'fruit', eggless: true, occasion: ['birthday','celebration','festival'], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 67,  deliveryTime: '3h',  sizes: [{label:'500g',price:28},{label:'1kg',price:50}] },
-  { id: 23, name: 'Corporate Celebration Cake',   category: 'cakes',   price: 45, image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png'], desc: 'Sleek modern design cake perfect for office parties and milestones', tag: '', flavor: 'chocolate', eggless: false, occasion: ['corporate'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 42,  deliveryTime: '6h',  sizes: [{label:'1kg',price:45},{label:'2kg',price:85},{label:'3kg',price:120}] },
-  { id: 24, name: 'Festival Special Cake',        category: 'cakes',   price: 30, image: 'images/birthday-cake.png', images: ['images/birthday-cake.png'], desc: 'Festive themed cake with seasonal decorations — Diwali, Christmas, Eid & more', tag: 'Seasonal', flavor: 'vanilla', eggless: true, occasion: ['festival'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 73,  deliveryTime: '4h',  sizes: [{label:'500g',price:30},{label:'1kg',price:55},{label:'2kg',price:100}] },
+  // ═══ CAKES — continued ═══
+  { id: 13, name: 'Black Forest Cake',           category: 'cakes',    price: 699,  image: 'images/black-forest.png',    images: ['images/black-forest.png'], desc: 'Chocolate sponge with whipped cream, cherries, and dark chocolate shavings', tag: '', flavor: 'chocolate', eggless: false, occasion: ['birthday','celebration'], bestseller: false, trending: true,  newArrival: false, rating: 4.7, reviewCount: 142, deliveryTime: '3h',  sizes: [{label:'500g',price:699},{label:'1kg',price:1199},{label:'2kg',price:2199}] },
+  { id: 14, name: 'Pineapple Cake',              category: 'cakes',    price: 599,  image: 'images/pineapple-cake.png',  images: ['images/pineapple-cake.png'], desc: 'Light vanilla sponge with caramelized pineapple and whipped cream', tag: '', flavor: 'fruit', eggless: true, occasion: ['birthday','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 118, deliveryTime: '2h',  sizes: [{label:'500g',price:599},{label:'1kg',price:999},{label:'2kg',price:1799}] },
+  { id: 15, name: 'New York Cheesecake',          category: 'cakes',    price: 849,  image: 'images/cheesecake.png',      images: ['images/cheesecake.png'], desc: 'Creamy baked cheesecake with buttery graham crust and berry compote', tag: 'Premium', flavor: 'vanilla', eggless: false, occasion: ['anniversary','celebration'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 95,  deliveryTime: '4h',  sizes: [{label:'6 inch',price:849},{label:'8 inch',price:1299}] },
+  { id: 16, name: 'Wedding Elegance Cake',        category: 'cakes',    price: 5999, image: 'images/wedding-cake.png',   images: ['images/wedding-cake.png'], desc: '3-tier white fondant cake with fresh flowers and elegant sugar work', tag: 'Premium', flavor: 'vanilla', eggless: false, occasion: ['wedding'], bestseller: false, trending: false, newArrival: false, rating: 5.0, reviewCount: 47,  deliveryTime: '24h', sizes: [{label:'2-Tier',price:5999},{label:'3-Tier',price:9999},{label:'4-Tier',price:14999}] },
+  { id: 17, name: 'Birthday Sprinkle Cake',       category: 'cakes',    price: 649,  image: 'images/birthday-cake.png',  images: ['images/birthday-cake.png'], desc: 'Fun rainbow sprinkle cake with buttercream swirls — includes candles!', tag: 'Popular', flavor: 'vanilla', eggless: false, occasion: ['birthday'], bestseller: true,  trending: true,  newArrival: false, rating: 4.8, reviewCount: 321, deliveryTime: '2h',  sizes: [{label:'500g',price:649},{label:'1kg',price:1099},{label:'2kg',price:1999}] },
+  { id: 18, name: 'Baby Shower Cake',             category: 'cakes',    price: 999,  image: 'images/baby-shower-cake.png', images: ['images/baby-shower-cake.png'], desc: 'Adorable pastel cake with fondant baby booties and stars decoration', tag: 'New', flavor: 'vanilla', eggless: false, occasion: ['baby-shower'], bestseller: false, trending: false, newArrival: true,  rating: 4.9, reviewCount: 38,  deliveryTime: '6h',  sizes: [{label:'1kg',price:999},{label:'2kg',price:1799},{label:'3kg',price:2499}] },
+  { id: 19, name: 'Graduation Cap Cake',          category: 'cakes',    price: 899,  image: 'images/graduation-cake.png', images: ['images/graduation-cake.png'], desc: 'Elegant graduation-themed cake with gold accents and fondant cap topper', tag: '', flavor: 'chocolate', eggless: false, occasion: ['graduation'], bestseller: false, trending: false, newArrival: true,  rating: 4.7, reviewCount: 29,  deliveryTime: '6h',  sizes: [{label:'1kg',price:899},{label:'2kg',price:1699}] },
+  { id: 20, name: 'Eggless Chocolate Cake',       category: 'cakes',    price: 649,  image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png'], desc: '100% eggless rich chocolate cake — same indulgent taste, no eggs!', tag: 'Eggless', flavor: 'chocolate', eggless: true, occasion: ['birthday','celebration'], bestseller: false, trending: true,  newArrival: false, rating: 4.6, reviewCount: 156, deliveryTime: '2h',  sizes: [{label:'500g',price:649},{label:'1kg',price:1099},{label:'2kg',price:1999}] },
+  { id: 21, name: 'Butterscotch Crunch Cake',     category: 'cakes',    price: 699,  image: 'images/pineapple-cake.png', images: ['images/pineapple-cake.png'], desc: 'Butterscotch sponge with caramel praline crunch and toffee drizzle', tag: '', flavor: 'caramel', eggless: false, occasion: ['birthday','celebration'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 89,  deliveryTime: '3h',  sizes: [{label:'500g',price:699},{label:'1kg',price:1199},{label:'2kg',price:2199}] },
+  { id: 22, name: 'Mango Mousse Cake',            category: 'cakes',    price: 749,  image: 'images/pineapple-cake.png', images: ['images/pineapple-cake.png'], desc: 'Light mango mousse on vanilla sponge — a tropical summer delight', tag: 'Seasonal', flavor: 'fruit', eggless: true, occasion: ['birthday','celebration','festival'], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 67,  deliveryTime: '3h',  sizes: [{label:'500g',price:749},{label:'1kg',price:1399}] },
+  { id: 23, name: 'Corporate Celebration Cake',    category: 'cakes',    price: 1299, image: 'images/chocolate-cake.png', images: ['images/chocolate-cake.png'], desc: 'Sleek modern design cake perfect for office parties and milestones', tag: '', flavor: 'chocolate', eggless: false, occasion: ['corporate'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 42,  deliveryTime: '6h',  sizes: [{label:'1kg',price:1299},{label:'2kg',price:2399},{label:'3kg',price:3499}] },
+  { id: 24, name: 'Festival Special Cake',         category: 'cakes',    price: 799,  image: 'images/birthday-cake.png',  images: ['images/birthday-cake.png'], desc: 'Festive themed cake with seasonal decorations — Diwali, Christmas, Eid & more', tag: 'Seasonal', flavor: 'vanilla', eggless: true, occasion: ['festival'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 73,  deliveryTime: '4h',  sizes: [{label:'500g',price:799},{label:'1kg',price:1449},{label:'2kg',price:2699}] },
 
-  // ═══ NEW — PASTRIES ═══
-  { id: 25, name: 'French Macarons',             category: 'pastries', price: 12, image: 'images/macarons.png', images: ['images/macarons.png'], desc: 'Delicate almond meringue shells with assorted premium ganache fillings', tag: 'Premium', flavor: 'assorted', eggless: false, occasion: ['wedding','anniversary','baby-shower'], bestseller: false, trending: true,  newArrival: true,  rating: 4.9, reviewCount: 134, deliveryTime: '2h',  sizes: [{label:'Box of 6',price:12},{label:'Box of 12',price:22},{label:'Box of 24',price:40}] },
-  { id: 26, name: 'Fudge Brownies',              category: 'pastries', price: 8,  image: 'images/brownies.png', images: ['images/brownies.png'], desc: 'Rich, fudgy brownies with a crackly top and gooey chocolate center', tag: 'Bestseller', flavor: 'chocolate', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 289, deliveryTime: '1h',  sizes: [{label:'Box of 4',price:8},{label:'Box of 8',price:14},{label:'Box of 12',price:20}] },
-  { id: 27, name: 'Glazed Donuts',               category: 'pastries', price: 3,  image: 'images/donuts.png', images: ['images/donuts.png'], desc: 'Light, fluffy donuts with colorful glazes — chocolate, strawberry, caramel', tag: '', flavor: 'assorted', eggless: false, occasion: ['birthday','baby-shower'], bestseller: false, trending: true,  newArrival: false, rating: 4.5, reviewCount: 198, deliveryTime: '1h',  sizes: [{label:'1pc',price:3},{label:'Box of 6',price:16},{label:'Box of 12',price:30}] },
-  { id: 28, name: 'Danish Pastry',               category: 'pastries', price: 5,  image: 'images/danish-pastry.png', images: ['images/danish-pastry.png'], desc: 'Flaky Danish with custard cream filling and fresh seasonal berries', tag: 'New', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: true,  rating: 4.6, reviewCount: 45,  deliveryTime: '2h',  sizes: [{label:'1pc',price:5},{label:'Box of 4',price:18}] },
-  { id: 29, name: 'Blueberry Muffins',           category: 'pastries', price: 4,  image: 'images/muffins.png', images: ['images/muffins.png'], desc: 'Fresh-baked muffins bursting with plump blueberries and streusel topping', tag: '', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 112, deliveryTime: '1h',  sizes: [{label:'1pc',price:4},{label:'Box of 4',price:14},{label:'Box of 6',price:20}] },
-  { id: 30, name: 'Chocolate Eclair',            category: 'pastries', price: 5,  image: 'images/croissant.png', images: ['images/croissant.png'], desc: 'Choux pastry filled with vanilla cream and topped with rich chocolate glaze', tag: '', flavor: 'chocolate', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 78,  deliveryTime: '2h',  sizes: [{label:'1pc',price:5},{label:'Box of 4',price:18}] },
-  { id: 31, name: 'Eggless Cookies',             category: 'pastries', price: 3,  image: 'images/cookies.png', images: ['images/cookies.png'], desc: 'Crunchy butter cookies made without eggs — just as delicious!', tag: 'Eggless', flavor: 'butter', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 93,  deliveryTime: '1h',  sizes: [{label:'Box of 6',price:3},{label:'Box of 12',price:5.50}] },
-  { id: 32, name: 'Almond Croissant',            category: 'pastries', price: 5.50, image: 'images/croissant.png', images: ['images/croissant.png'], desc: 'Classic croissant filled with almond cream and topped with sliced almonds', tag: '', flavor: 'nuts', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: true,  rating: 4.7, reviewCount: 61,  deliveryTime: '1h',  sizes: [{label:'1pc',price:5.50},{label:'Box of 4',price:20}] },
+  // ═══ PASTRIES ═══
+  { id: 25, name: 'French Macarons',              category: 'pastries', price: 349,  image: 'images/macarons.png',        images: ['images/macarons.png'], desc: 'Delicate almond meringue shells with assorted premium ganache fillings', tag: 'Premium', flavor: 'assorted', eggless: false, occasion: ['wedding','anniversary','baby-shower'], bestseller: false, trending: true,  newArrival: true,  rating: 4.9, reviewCount: 134, deliveryTime: '2h',  sizes: [{label:'Box of 6',price:349},{label:'Box of 12',price:649},{label:'Box of 24',price:1199}] },
+  { id: 26, name: 'Fudge Brownies',               category: 'pastries', price: 299,  image: 'images/brownies.png',        images: ['images/brownies.png'], desc: 'Rich, fudgy brownies with a crackly top and gooey chocolate center', tag: 'Bestseller', flavor: 'chocolate', eggless: false, occasion: [], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 289, deliveryTime: '1h',  sizes: [{label:'Box of 4',price:299},{label:'Box of 8',price:499},{label:'Box of 12',price:699}] },
+  { id: 27, name: 'Glazed Donuts',                category: 'pastries', price: 79,   image: 'images/donuts.png',          images: ['images/donuts.png'], desc: 'Light, fluffy donuts with colorful glazes — chocolate, strawberry, caramel', tag: '', flavor: 'assorted', eggless: false, occasion: ['birthday','baby-shower'], bestseller: false, trending: true,  newArrival: false, rating: 4.5, reviewCount: 198, deliveryTime: '1h',  sizes: [{label:'1pc',price:79},{label:'Box of 6',price:449},{label:'Box of 12',price:849}] },
+  { id: 28, name: 'Danish Pastry',                category: 'pastries', price: 149,  image: 'images/danish-pastry.png',  images: ['images/danish-pastry.png'], desc: 'Flaky Danish with custard cream filling and fresh seasonal berries', tag: 'New', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: true,  rating: 4.6, reviewCount: 45,  deliveryTime: '2h',  sizes: [{label:'1pc',price:149},{label:'Box of 4',price:549}] },
+  { id: 29, name: 'Blueberry Muffins',            category: 'pastries', price: 119,  image: 'images/muffins.png',         images: ['images/muffins.png'], desc: 'Fresh-baked muffins bursting with plump blueberries and streusel topping', tag: '', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 112, deliveryTime: '1h',  sizes: [{label:'1pc',price:119},{label:'Box of 4',price:429},{label:'Box of 6',price:599}] },
+  { id: 30, name: 'Chocolate Eclair',             category: 'pastries', price: 149,  image: 'images/croissant.png',       images: ['images/croissant.png'], desc: 'Choux pastry filled with vanilla cream and topped with rich chocolate glaze', tag: '', flavor: 'chocolate', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 78,  deliveryTime: '2h',  sizes: [{label:'1pc',price:149},{label:'Box of 4',price:549}] },
+  { id: 31, name: 'Eggless Cookies',              category: 'pastries', price: 249,  image: 'images/cookies.png',         images: ['images/cookies.png'], desc: 'Crunchy butter cookies made without eggs — just as delicious!', tag: 'Eggless', flavor: 'butter', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 93,  deliveryTime: '1h',  sizes: [{label:'Box of 6',price:249},{label:'Box of 12',price:449}] },
+  { id: 32, name: 'Almond Croissant',             category: 'pastries', price: 169,  image: 'images/croissant.png',       images: ['images/croissant.png'], desc: 'Classic croissant filled with almond cream and topped with sliced almonds', tag: '', flavor: 'nuts', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: true,  rating: 4.7, reviewCount: 61,  deliveryTime: '1h',  sizes: [{label:'1pc',price:169},{label:'Box of 4',price:599}] },
 
-  // ═══ NEW — BREADS ═══
-  { id: 33, name: 'Focaccia Bread',              category: 'breads',  price: 9,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Italian herb focaccia with rosemary, olive oil, and sea salt flakes', tag: '', flavor: 'classic', eggless: true, occasion: ['corporate'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 56,  deliveryTime: '2h',  sizes: [{label:'Small',price:9},{label:'Large',price:16}] },
-  { id: 34, name: 'Multigrain Loaf',             category: 'breads',  price: 8,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Packed with 7 grains and seeds — the perfect healthy daily bread', tag: 'Healthy', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 72,  deliveryTime: '2h',  sizes: [{label:'400g',price:8},{label:'800g',price:14}] },
-  { id: 35, name: 'Garlic Bread',                category: 'breads',  price: 6,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Toasty garlic butter bread with herbs — the ultimate comfort side', tag: 'Popular', flavor: 'butter', eggless: true, occasion: ['corporate'], bestseller: true,  trending: false, newArrival: false, rating: 4.7, reviewCount: 201, deliveryTime: '1h',  sizes: [{label:'4pc',price:6},{label:'8pc',price:10}] },
-  { id: 36, name: 'Brioche Buns',                category: 'breads',  price: 4,  image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Soft, rich, buttery brioche buns — perfect for burgers or just butter', tag: '', flavor: 'butter', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 48,  deliveryTime: '2h',  sizes: [{label:'Pack of 4',price:4},{label:'Pack of 8',price:7}] },
-  { id: 37, name: 'Banana Walnut Bread',         category: 'breads',  price: 10, image: 'images/artisan-bread.png', images: ['images/artisan-bread.png'], desc: 'Moist banana bread studded with crunchy walnuts — comfort in every slice', tag: 'New', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 34,  deliveryTime: '2h',  sizes: [{label:'Small Loaf',price:10},{label:'Large Loaf',price:16}] },
+  // ═══ BREADS ═══
+  { id: 33, name: 'Focaccia Bread',               category: 'breads',   price: 299,  image: 'images/artisan-bread.png',  images: ['images/artisan-bread.png'], desc: 'Italian herb focaccia with rosemary, olive oil, and sea salt flakes', tag: '', flavor: 'classic', eggless: true, occasion: ['corporate'], bestseller: false, trending: false, newArrival: false, rating: 4.6, reviewCount: 56,  deliveryTime: '2h',  sizes: [{label:'Small',price:299},{label:'Large',price:499}] },
+  { id: 34, name: 'Multigrain Loaf',              category: 'breads',   price: 249,  image: 'images/artisan-bread.png',  images: ['images/artisan-bread.png'], desc: 'Packed with 7 grains and seeds — the perfect healthy daily bread', tag: 'Healthy', flavor: 'classic', eggless: true, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.4, reviewCount: 72,  deliveryTime: '2h',  sizes: [{label:'400g',price:249},{label:'800g',price:449}] },
+  { id: 35, name: 'Garlic Bread',                 category: 'breads',   price: 199,  image: 'images/artisan-bread.png',  images: ['images/artisan-bread.png'], desc: 'Toasty garlic butter bread with herbs — the ultimate comfort side', tag: 'Popular', flavor: 'butter', eggless: true, occasion: ['corporate'], bestseller: true,  trending: false, newArrival: false, rating: 4.7, reviewCount: 201, deliveryTime: '1h',  sizes: [{label:'4pc',price:199},{label:'8pc',price:349}] },
+  { id: 36, name: 'Brioche Buns',                 category: 'breads',   price: 149,  image: 'images/artisan-bread.png',  images: ['images/artisan-bread.png'], desc: 'Soft, rich, buttery brioche buns — perfect for burgers or just butter', tag: '', flavor: 'butter', eggless: false, occasion: [], bestseller: false, trending: false, newArrival: false, rating: 4.5, reviewCount: 48,  deliveryTime: '2h',  sizes: [{label:'Pack of 4',price:149},{label:'Pack of 8',price:269}] },
+  { id: 37, name: 'Banana Walnut Bread',          category: 'breads',   price: 299,  image: 'images/artisan-bread.png',  images: ['images/artisan-bread.png'], desc: 'Moist banana bread studded with crunchy walnuts — comfort in every slice', tag: 'New', flavor: 'fruit', eggless: false, occasion: [], bestseller: false, trending: true,  newArrival: true,  rating: 4.7, reviewCount: 34,  deliveryTime: '2h',  sizes: [{label:'Small Loaf',price:299},{label:'Large Loaf',price:499}] },
 
-  // ═══ NEW — CUSTOM / OCCASION ═══
-  { id: 38, name: 'Photo Print Cake',            category: 'cakes',   price: 35, image: 'images/birthday-cake.png', images: ['images/birthday-cake.png'], desc: 'Customizable cake with your edible photo print — perfect for any occasion!', tag: 'Custom', flavor: 'vanilla', eggless: false, occasion: ['birthday','anniversary','graduation','corporate'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 87,  deliveryTime: '8h',  sizes: [{label:'1kg',price:35},{label:'2kg',price:65}] },
-  { id: 39, name: 'Anniversary Heart Cake',      category: 'cakes',   price: 32, image: 'images/red-velvet.png', images: ['images/red-velvet.png'], desc: 'Heart-shaped red velvet cake with rose buttercream — romance on a plate', tag: '', flavor: 'vanilla', eggless: false, occasion: ['anniversary'], bestseller: false, trending: false, newArrival: false, rating: 4.9, reviewCount: 65,  deliveryTime: '4h',  sizes: [{label:'500g',price:32},{label:'1kg',price:58}] },
-  { id: 40, name: 'Dessert Platter',             category: 'pastries', price: 45, image: 'images/macarons.png', images: ['images/macarons.png','images/brownies.png','images/cookies.png'], desc: 'Curated assortment of brownies, cookies, macarons, and mini pastries', tag: 'Popular', flavor: 'assorted', eggless: false, occasion: ['corporate','celebration','festival'], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 115, deliveryTime: '3h',  sizes: [{label:'Small (12pc)',price:45},{label:'Large (24pc)',price:80}] },
+  // ═══ CUSTOM / OCCASION ═══
+  { id: 38, name: 'Photo Print Cake',             category: 'cakes',    price: 999,  image: 'images/birthday-cake.png',  images: ['images/birthday-cake.png'], desc: 'Customizable cake with your edible photo print — perfect for any occasion!', tag: 'Custom', flavor: 'vanilla', eggless: false, occasion: ['birthday','anniversary','graduation','corporate'], bestseller: false, trending: true,  newArrival: true,  rating: 4.8, reviewCount: 87,  deliveryTime: '8h',  sizes: [{label:'1kg',price:999},{label:'2kg',price:1799}] },
+  { id: 39, name: 'Anniversary Heart Cake',       category: 'cakes',    price: 899,  image: 'images/red-velvet.png',     images: ['images/red-velvet.png'], desc: 'Heart-shaped red velvet cake with rose buttercream — romance on a plate', tag: '', flavor: 'vanilla', eggless: false, occasion: ['anniversary'], bestseller: false, trending: false, newArrival: false, rating: 4.9, reviewCount: 65,  deliveryTime: '4h',  sizes: [{label:'500g',price:899},{label:'1kg',price:1599}] },
+  { id: 40, name: 'Dessert Platter',              category: 'pastries', price: 1299, image: 'images/macarons.png',       images: ['images/macarons.png','images/brownies.png','images/cookies.png'], desc: 'Curated assortment of brownies, cookies, macarons, and mini pastries', tag: 'Popular', flavor: 'assorted', eggless: false, occasion: ['corporate','celebration','festival'], bestseller: true,  trending: false, newArrival: false, rating: 4.8, reviewCount: 115, deliveryTime: '3h',  sizes: [{label:'Small (12pc)',price:1299},{label:'Large (24pc)',price:2299}] },
 ];
 
 // ─── Occasion Collections Data ───
@@ -78,15 +85,15 @@ const ICONS = {
   heartFill: '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>',
 };
 
-// ─── Cart System ───
+// ─── Cart System (INR) ───
 const Cart = {
   items: JSON.parse(localStorage.getItem('sc-cart') || '[]'),
 
   add(productId, qty = 1) {
-    const product = PRODUCTS.find(p => p.id === productId);
+    const product = PRODUCTS.find(p => String(p.id) === String(productId));
     if (!product) return;
 
-    const existing = this.items.find(i => i.id === productId);
+    const existing = this.items.find(i => String(i.id) === String(productId));
     if (existing) {
       existing.qty += qty;
     } else {
@@ -95,16 +102,33 @@ const Cart = {
     this.save();
     this.updateUI();
     Toast.show(`${product.name} added to cart!`, 'success');
+
+    // GA4 ecommerce event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'add_to_cart', {
+        currency: 'INR',
+        value: product.price * qty,
+        items: [{ item_id: String(product.id), item_name: product.name, item_category: product.category, price: product.price, quantity: qty }]
+      });
+    }
   },
 
   remove(productId) {
-    this.items = this.items.filter(i => i.id !== productId);
+    const product = this.items.find(i => String(i.id) === String(productId));
+    this.items = this.items.filter(i => String(i.id) !== String(productId));
     this.save();
     this.updateUI();
+    if (product && typeof gtag !== 'undefined') {
+      gtag('event', 'remove_from_cart', {
+        currency: 'INR',
+        value: product.price * product.qty,
+        items: [{ item_id: String(product.id), item_name: product.name, price: product.price, quantity: product.qty }]
+      });
+    }
   },
 
   updateQty(productId, qty) {
-    const item = this.items.find(i => i.id === productId);
+    const item = this.items.find(i => String(i.id) === String(productId));
     if (!item) return;
     item.qty = Math.max(1, qty);
     this.save();
@@ -112,7 +136,7 @@ const Cart = {
   },
 
   getTotal() {
-    return this.items.reduce((sum, i) => sum + i.price * i.qty, 0);
+    return this.items.reduce((sum, i) => sum + (i.price || 0) * i.qty, 0);
   },
 
   getCount() {
@@ -124,10 +148,10 @@ const Cart = {
   },
 
   updateUI() {
-    // Update badge
-    const badges = document.querySelectorAll('#cart-count');
     const count = this.getCount();
-    badges.forEach(b => {
+
+    // Update badge
+    document.querySelectorAll('#cart-count').forEach(b => {
       b.textContent = count;
       b.classList.toggle('show', count > 0);
     });
@@ -140,21 +164,22 @@ const Cart = {
           <div class="cart-empty">
             <div class="cart-empty__icon">🛒</div>
             <p>Your cart is empty</p>
+            <a href="menu.html" class="btn btn--primary btn--sm" style="margin-top:var(--space-sm);">Browse Menu</a>
           </div>`;
       } else {
         itemsContainer.innerHTML = this.items.map(item => `
           <div class="cart-item">
-            <div class="cart-item__image"><img src="${item.image}" alt="${item.name}"></div>
+            <div class="cart-item__image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
             <div class="cart-item__info">
-              <div class="cart-item__name">${item.name}</div>
-              <div class="cart-item__price">$${(item.price * item.qty).toFixed(2)}</div>
+              <div class="cart-item__name">${item.name}${item.tag === 'Custom' ? ' <span class="product-badge" style="font-size:0.55rem;">Custom</span>' : ''}</div>
+              <div class="cart-item__price">${fmtINR(item.price * item.qty)}</div>
               <div class="cart-item__qty">
-                <button class="cart-item__qty-btn" onclick="Cart.updateQty(${item.id}, ${item.qty - 1})">−</button>
+                <button class="cart-item__qty-btn" onclick="Cart.updateQty('${item.id}', ${item.qty - 1})" aria-label="Decrease quantity">−</button>
                 <span>${item.qty}</span>
-                <button class="cart-item__qty-btn" onclick="Cart.updateQty(${item.id}, ${item.qty + 1})">+</button>
+                <button class="cart-item__qty-btn" onclick="Cart.updateQty('${item.id}', ${item.qty + 1})" aria-label="Increase quantity">+</button>
               </div>
             </div>
-            <button class="cart-item__remove" onclick="Cart.remove(${item.id})">✕</button>
+            <button class="cart-item__remove" onclick="Cart.remove('${item.id}')" aria-label="Remove item">✕</button>
           </div>
         `).join('');
       }
@@ -162,7 +187,7 @@ const Cart = {
 
     // Update total
     const totalEl = document.querySelector('.cart-sidebar__total-value');
-    if (totalEl) totalEl.textContent = `$${this.getTotal().toFixed(2)}`;
+    if (totalEl) totalEl.textContent = fmtINR(this.getTotal());
 
     // Sticky cart bar
     const stickyCart = document.querySelector('.sticky-cart');
@@ -171,22 +196,27 @@ const Cart = {
       const stickyCount = stickyCart.querySelector('.sticky-cart__count');
       const stickyTotal = stickyCart.querySelector('.sticky-cart__total');
       if (stickyCount) stickyCount.textContent = `${count} item${count !== 1 ? 's' : ''}`;
-      if (stickyTotal) stickyTotal.textContent = `$${this.getTotal().toFixed(2)}`;
+      if (stickyTotal) stickyTotal.textContent = fmtINR(this.getTotal());
     }
+
+    // Mobile CTA bar cart count
+    const mobileCTACart = document.querySelector('.mobile-cta__cart-count');
+    if (mobileCTACart) mobileCTACart.textContent = count > 0 ? count : '';
   },
 
   toggleSidebar() {
     const sidebar = document.querySelector('.cart-sidebar');
-    const overlay = document.querySelector('.cart-overlay');
     if (sidebar) {
       sidebar.classList.toggle('open');
       document.body.classList.toggle('no-scroll');
+      if (sidebar.classList.contains('open') && typeof gtag !== 'undefined') {
+        gtag('event', 'view_cart', { currency: 'INR', value: this.getTotal() });
+      }
     }
   },
 
   init() {
     this.updateUI();
-
     document.querySelectorAll('#cart-toggle').forEach(btn => {
       btn.addEventListener('click', () => this.toggleSidebar());
     });
@@ -205,6 +235,10 @@ const Wishlist = {
     } else {
       this.items.push(productId);
       Toast.show('Added to wishlist! ❤️', 'success');
+      if (typeof gtag !== 'undefined') {
+        const p = PRODUCTS.find(pr => pr.id === productId);
+        if (p) gtag('event', 'wishlist_add', { item_name: p.name, currency: 'INR', value: p.price });
+      }
     }
     this.save();
     this.updateUI();
@@ -219,14 +253,12 @@ const Wishlist = {
   },
 
   updateUI() {
-    // Update badge
     const badges = document.querySelectorAll('#wishlist-count');
     badges.forEach(b => {
       b.textContent = this.items.length;
       b.classList.toggle('show', this.items.length > 0);
     });
 
-    // Update heart buttons
     document.querySelectorAll('[data-wishlist]').forEach(btn => {
       const id = parseInt(btn.dataset.wishlist);
       const isWished = this.has(id);
@@ -237,6 +269,20 @@ const Wishlist = {
 
   init() {
     this.updateUI();
+    document.querySelectorAll('#wishlist-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Show a wishlist summary toast
+        if (this.items.length === 0) {
+          Toast.show('Your wishlist is empty', 'info');
+        } else {
+          const names = this.items.slice(0, 3).map(id => {
+            const p = PRODUCTS.find(pr => pr.id === id);
+            return p ? p.name : '';
+          }).filter(Boolean).join(', ');
+          Toast.show(`❤️ Wishlist: ${names}${this.items.length > 3 ? ` +${this.items.length - 3} more` : ''}`, 'info', 4000);
+        }
+      });
+    });
   }
 };
 
@@ -254,7 +300,7 @@ const QuickView = {
     overlay.querySelector('.modal__category').textContent = product.category;
     overlay.querySelector('.modal__title').textContent = product.name;
     overlay.querySelector('.modal__desc').textContent = product.desc;
-    overlay.querySelector('.modal__price').textContent = `$${product.price.toFixed(2)}`;
+    overlay.querySelector('.modal__price').textContent = fmtINR(product.price);
 
     const qtyEl = overlay.querySelector('.modal__qty-value');
     qtyEl.textContent = '1';
@@ -272,11 +318,20 @@ const QuickView = {
       this.close();
     };
 
+    // GA4 view_item event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'view_item', {
+        currency: 'INR',
+        value: product.price,
+        items: [{ item_id: String(product.id), item_name: product.name, item_category: product.category, price: product.price }]
+      });
+    }
+
     // Review System Integration
     const reviewsContainer = overlay.querySelector('.modal__reviews');
     if (reviewsContainer && typeof ReviewSystem !== 'undefined') {
       reviewsContainer.innerHTML = `
-        <h3 style="margin-bottom: var(--space-md); font-family: var(--font-heading);">Customer Reviews</h3>
+        <h3 style="margin-bottom: var(--space-md); font-family: var(--font-heading);">Customer Reviews <span style="font-size:var(--fs-xs);color:var(--text-muted);font-weight:400;">(Sample Demo Reviews)</span></h3>
         ${ReviewSystem.renderStarBreakdown(productId)}
         <div class="review-list">
           ${ReviewSystem.renderReviewList(productId, 'newest')}
@@ -347,7 +402,10 @@ const Compare = {
         ${products.map(p => `<th><img src="${p.image}" alt="${p.name}"><br>${p.name}</th>`).join('')}
       </tr>
       <tr><td><strong>Category</strong></td>${products.map(p => `<td>${p.category}</td>`).join('')}</tr>
-      <tr><td><strong>Price</strong></td>${products.map(p => `<td><strong>$${p.price.toFixed(2)}</strong></td>`).join('')}</tr>
+      <tr><td><strong>Price</strong></td>${products.map(p => `<td><strong>${fmtINR(p.price)}</strong></td>`).join('')}</tr>
+      <tr><td><strong>Rating</strong></td>${products.map(p => `<td>${renderStars(p.rating)} (${p.reviewCount})</td>`).join('')}</tr>
+      <tr><td><strong>Eggless</strong></td>${products.map(p => `<td>${p.eggless ? '✅ Yes' : '❌ No'}</td>`).join('')}</tr>
+      <tr><td><strong>Delivery</strong></td>${products.map(p => `<td>${p.deliveryTime}</td>`).join('')}</tr>
       <tr><td><strong>Description</strong></td>${products.map(p => `<td>${p.desc}</td>`).join('')}</tr>
       <tr><td></td>${products.map(p => `<td><button class="btn btn--primary btn--sm" onclick="Cart.add(${p.id}); Compare.closeModal();">Add to Cart</button></td>`).join('')}</tr>
     `;
@@ -409,26 +467,30 @@ const Search = {
   },
 
   filter(query) {
-    if (!query.trim()) return;
+    if (!query.trim()) {
+      const container = document.querySelector('.search-results');
+      if (container) container.style.display = 'none';
+      return;
+    }
     const q = query.toLowerCase();
     const results = PRODUCTS.filter(p =>
       p.name.toLowerCase().includes(q) ||
       p.category.toLowerCase().includes(q) ||
-      p.desc.toLowerCase().includes(q)
+      p.desc.toLowerCase().includes(q) ||
+      (p.flavor && p.flavor.toLowerCase().includes(q))
     );
 
-    // Render search results
     const container = document.querySelector('.search-results');
     if (container) {
       if (results.length === 0) {
         container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:var(--space-lg);">No products found 😔</p>';
       } else {
-        container.innerHTML = results.map(p => `
-          <div class="search-result" onclick="Search.close(); QuickView.open(${p.id});" style="display:flex;gap:var(--space-sm);padding:var(--space-sm);border-radius:var(--radius-md);cursor:pointer;transition:background 0.2s;">
-            <img src="${p.image}" alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:var(--radius-sm);">
+        container.innerHTML = results.slice(0, 8).map(p => `
+          <div class="search-result" onclick="Search.close(); QuickView.open(${p.id});" role="button" tabindex="0" aria-label="View ${p.name}">
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
             <div>
-              <div style="font-weight:600;font-size:var(--fs-small);">${p.name}</div>
-              <div style="color:var(--accent);font-weight:700;font-size:var(--fs-small);">$${p.price.toFixed(2)}</div>
+              <div class="search-result__name">${p.name}</div>
+              <div class="search-result__meta"><span class="search-result__cat">${p.category}</span> <span class="search-result__price">${fmtINR(p.price)}</span></div>
             </div>
           </div>
         `).join('');
@@ -445,7 +507,7 @@ const Search = {
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     this.recognition = new SpeechRecognition();
-    this.recognition.lang = 'en-US';
+    this.recognition.lang = 'en-IN';
     this.recognition.continuous = false;
 
     const voiceBtn = document.querySelector('.search-box__voice');
@@ -492,6 +554,10 @@ const Search = {
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') this.close();
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        this.open();
+      }
     });
 
     document.querySelectorAll('#search-toggle').forEach(btn => {
@@ -507,6 +573,9 @@ const Search = {
       input.addEventListener('input', (e) => {
         clearTimeout(debounce);
         debounce = setTimeout(() => this.filter(e.target.value), 300);
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') this.filter(e.target.value);
       });
     }
 
@@ -548,7 +617,7 @@ const CakeQuiz = {
       text: 'Any dietary preferences? 🌿',
       options: [
         { emoji: '✅', label: 'No restrictions', value: 'none' },
-        { emoji: '🌾', label: 'Gluten-free', value: 'gf' },
+        { emoji: '🌿', label: 'Eggless', value: 'eggless' },
         { emoji: '🥛', label: 'Dairy-free', value: 'df' },
         { emoji: '🌱', label: 'Vegan', value: 'vegan' },
       ]
@@ -557,25 +626,25 @@ const CakeQuiz = {
       key: 'budget',
       text: 'What\'s your budget? 💰',
       options: [
-        { emoji: '💵', label: 'Under $10', value: 'low' },
-        { emoji: '💳', label: '$10 – $25', value: 'mid' },
-        { emoji: '💎', label: '$25 – $35', value: 'high' },
-        { emoji: '👑', label: 'Sky\'s the limit', value: 'premium' },
+        { emoji: '💵', label: 'Under ₹300', value: 'low' },
+        { emoji: '💳', label: '₹300 – ₹800', value: 'mid' },
+        { emoji: '💎', label: '₹800 – ₹1,500', value: 'high' },
+        { emoji: '👑', label: 'Sky\'s the limit!', value: 'premium' },
       ]
     }
   ],
 
   recommendations: {
-    default: { name: 'Chocolate Cake', emoji: '🍫', desc: 'Our bestselling rich chocolate masterpiece — perfect for any occasion!', id: 1 },
-    birthday_chocolate: { name: 'Chocolate Cake', emoji: '🎂', desc: 'The ultimate birthday chocolate cake with layers of ganache!', id: 1 },
-    birthday_fruity: { name: 'Strawberry Cake', emoji: '🍓', desc: 'Fresh strawberry cake — fruity, bright, and perfect for birthdays!', id: 7 },
-    birthday_classic: { name: 'Red Velvet Cake', emoji: '❤️', desc: 'A classic red velvet birthday cake with cream cheese frosting!', id: 8 },
-    wedding_classic: { name: 'Tiramisu Cake', emoji: '☕', desc: 'An elegant tiramisu cake, perfect for your special day!', id: 12 },
-    celebration_chocolate: { name: 'Chocolate Cake', emoji: '🏆', desc: 'Celebrate in style with our showstopping chocolate cake!', id: 1 },
-    casual_chocolate: { name: 'Chocolate Chip Cookies', emoji: '🍪', desc: 'For a cozy treat — our legendary chocolate chip cookies!', id: 6 },
-    casual_fruity: { name: 'Apple Pie', emoji: '🥧', desc: 'Nothing says comfort like a warm slice of apple pie!', id: 5 },
-    casual_classic: { name: 'Butter Croissant', emoji: '🥐', desc: 'Simple perfection — our flaky, golden butter croissant!', id: 2 },
-    casual_coffee: { name: 'Cinnamon Roll', emoji: '🌀', desc: 'Pair with coffee for the ultimate casual indulgence!', id: 11 },
+    default:             { name: 'Chocolate Truffle Cake', emoji: '🍫', desc: 'Our bestselling rich chocolate masterpiece — perfect for any occasion!', id: 1 },
+    birthday_chocolate:  { name: 'Chocolate Truffle Cake', emoji: '🎂', desc: 'The ultimate birthday chocolate cake with layers of ganache!', id: 1 },
+    birthday_fruity:     { name: 'Strawberry Dream Cake', emoji: '🍓', desc: 'Fresh strawberry cake — fruity, bright, and perfect for birthdays!', id: 7 },
+    birthday_classic:    { name: 'Red Velvet Cake', emoji: '❤️', desc: 'A classic red velvet birthday cake with cream cheese frosting!', id: 8 },
+    wedding_classic:     { name: 'Wedding Elegance Cake', emoji: '💒', desc: 'Our stunning 3-tier fondant cake, perfect for your special day!', id: 16 },
+    celebration_chocolate: { name: 'Chocolate Truffle Cake', emoji: '🏆', desc: 'Celebrate in style with our showstopping chocolate truffle cake!', id: 1 },
+    casual_chocolate:    { name: 'Fudge Brownies', emoji: '🍫', desc: 'For a cozy treat — our legendary fudgy brownies!', id: 26 },
+    casual_fruity:       { name: 'Classic Apple Pie', emoji: '🥧', desc: 'Nothing says comfort like a warm slice of apple pie!', id: 5 },
+    casual_classic:      { name: 'Butter Croissant', emoji: '🥐', desc: 'Simple perfection — our flaky, golden butter croissant!', id: 2 },
+    casual_coffee:       { name: 'Cinnamon Rolls', emoji: '🌀', desc: 'Pair with coffee for the ultimate casual indulgence!', id: 11 },
   },
 
   getRecommendation() {
@@ -593,6 +662,7 @@ const CakeQuiz = {
       document.body.classList.add('no-scroll');
       this.render();
     }
+    if (typeof gtag !== 'undefined') gtag('event', 'quiz_started');
   },
 
   close() {
@@ -640,6 +710,8 @@ const CakeQuiz = {
     if (!content) return;
 
     const rec = this.getRecommendation();
+    const product = PRODUCTS.find(p => p.id === rec.id);
+    const price = product ? fmtINR(product.price) : '';
 
     content.innerHTML = `
       <div class="quiz__progress"><div class="quiz__progress-bar" style="width: 100%"></div></div>
@@ -647,12 +719,17 @@ const CakeQuiz = {
         <div class="quiz__result-emoji">${rec.emoji}</div>
         <h3 class="quiz__result-title">We recommend: ${rec.name}!</h3>
         <p class="quiz__result-desc">${rec.desc}</p>
+        ${price ? `<p style="font-size:1.2rem;font-weight:700;color:var(--accent);margin-bottom:var(--space-md);">Starting from ${price}</p>` : ''}
         <div style="display:flex;gap:var(--space-sm);justify-content:center;flex-wrap:wrap;">
           <button class="btn btn--primary" onclick="Cart.add(${rec.id}); CakeQuiz.close();">Add to Cart</button>
           <button class="btn btn--secondary" onclick="CakeQuiz.open();">Try Again</button>
         </div>
       </div>
     `;
+
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'quiz_completed', { recommended_item: rec.name });
+    }
   },
 
   init() {
@@ -687,6 +764,7 @@ const CategoryFilter = {
         if (tab.dataset.occasion) {
           this.currentOccasion = tab.dataset.occasion;
           this.currentCategory = 'all';
+          if (typeof gtag !== 'undefined') gtag('event', 'occasion_selected', { occasion: tab.dataset.occasion });
         } else {
           this.currentCategory = tab.dataset.category;
           this.currentOccasion = null;
@@ -696,10 +774,8 @@ const CategoryFilter = {
       });
     });
 
-    // Load initial batch
     this.loadMore();
 
-    // Infinite scroll
     const sentinel = document.getElementById('scroll-sentinel');
     if (sentinel) {
       const observer = new IntersectionObserver((entries) => {
@@ -719,7 +795,6 @@ const CategoryFilter = {
     if (this.currentOccasion) {
       results = results.filter(p => p.occasion && p.occasion.includes(this.currentOccasion));
     }
-    // Chain through advanced filters if available
     if (typeof AdvancedFilter !== 'undefined') {
       results = AdvancedFilter.filterProducts(results);
     }
@@ -736,21 +811,24 @@ const CategoryFilter = {
       this.grid.innerHTML = '';
     }
 
+    if (filtered.length === 0 && this.displayedCount === 0) {
+      this.grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:var(--space-2xl);color:var(--text-muted);"><span style="font-size:3rem;">🔍</span><p style="margin-top:var(--space-sm);">No products match your filters.</p><button class="btn btn--ghost" onclick="AdvancedFilter.clearAll()" style="margin-top:var(--space-sm);">Clear Filters</button></div>';
+      return;
+    }
+
     batch.forEach((product, i) => {
       const card = this.createCard(product);
-      card.style.animationDelay = `${i * 0.1}s`;
+      card.style.animationDelay = `${i * 0.05}s`;
       this.grid.appendChild(card);
     });
 
     this.displayedCount += batch.length;
 
-    // Update load more indicator
     const loadMore = document.getElementById('load-more');
     if (loadMore) {
       loadMore.style.display = this.displayedCount >= filtered.length ? 'none' : 'block';
     }
 
-    // Re-init reveals (defer to allow layout)
     setTimeout(() => {
       if (typeof RevealManager !== 'undefined') RevealManager.init();
     }, 50);
@@ -759,29 +837,31 @@ const CategoryFilter = {
   createCard(product) {
     const div = document.createElement('div');
     div.className = 'product-card reveal';
+    div.setAttribute('data-product-id', product.id);
     div.innerHTML = `
       ${product.tag ? `<span class="product-card__tag">${product.tag}</span>` : ''}
       <div class="product-card__image">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
         <div class="product-card__actions">
-          <button class="product-card__action" data-wishlist="${product.id}" onclick="Wishlist.toggle(${product.id})" title="Wishlist">
+          <button class="product-card__action" data-wishlist="${product.id}" onclick="Wishlist.toggle(${product.id})" title="Add to Wishlist" aria-label="Add ${product.name} to wishlist">
             ${Wishlist.has(product.id) ? ICONS.heartFill : ICONS.heart}
           </button>
-          <button class="product-card__action" onclick="QuickView.open(${product.id})" title="Quick View">
+          <button class="product-card__action" onclick="QuickView.open(${product.id})" title="Quick View" aria-label="Quick view ${product.name}">
             ${ICONS.eye}
           </button>
-          <button class="product-card__action" data-compare="${product.id}" onclick="Compare.toggle(${product.id})" title="Compare">
+          <button class="product-card__action" data-compare="${product.id}" onclick="Compare.toggle(${product.id})" title="Compare" aria-label="Compare ${product.name}">
             ${ICONS.compare}
           </button>
         </div>
       </div>
       <div class="product-card__body">
-        <div class="product-card__category">${product.category}</div>
+        <div class="product-card__category">${product.category}${product.eggless ? ' · <span style="color:var(--success)">Eggless</span>' : ''}</div>
         <h3 class="product-card__title">${product.name}</h3>
+        <div class="product-card__rating">${renderStars(product.rating)} <span style="color:var(--text-muted);font-size:var(--fs-xs);">(${product.reviewCount})</span></div>
         <p class="product-card__desc">${product.desc}</p>
         <div class="product-card__footer">
-          <span class="product-card__price">$${product.price.toFixed(2)}</span>
-          <button class="product-card__add-btn" onclick="Cart.add(${product.id})">Add to Cart</button>
+          <span class="product-card__price">${fmtINR(product.price)}</span>
+          <button class="product-card__add-btn" onclick="Cart.add(${product.id})" aria-label="Add ${product.name} to cart">Add to Cart</button>
         </div>
       </div>
     `;
@@ -794,17 +874,17 @@ function renderStars(rating) {
   const full = Math.floor(rating);
   const half = rating % 1 >= 0.5 ? 1 : 0;
   const empty = 5 - full - half;
-  return `<span class="stars">${'★'.repeat(full)}${half ? '⯨' : ''}${'☆'.repeat(empty)}</span>`;
+  return `<span class="stars" aria-label="${rating} out of 5 stars">${'★'.repeat(full)}${half ? '½' : ''}${'☆'.repeat(empty)}</span>`;
 }
 
-// ─── Compact Product Card (for horizontal scrollers) ───
+// ─── Compact Product Card (horizontal scrollers) ───
 function renderCompactCard(product) {
   return `
-    <div class="compact-card" onclick="QuickView.open(${product.id})">
+    <div class="compact-card" onclick="QuickView.open(${product.id})" role="button" tabindex="0" aria-label="Quick view ${product.name}">
       ${product.tag ? `<span class="compact-card__tag">${product.tag}</span>` : ''}
       <div class="compact-card__image">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
-        <button class="compact-card__wishlist" data-wishlist="${product.id}" onclick="event.stopPropagation(); Wishlist.toggle(${product.id})" title="Wishlist">
+        <button class="compact-card__wishlist" data-wishlist="${product.id}" onclick="event.stopPropagation(); Wishlist.toggle(${product.id})" title="Wishlist" aria-label="Add ${product.name} to wishlist">
           ${Wishlist.has(product.id) ? ICONS.heartFill : ICONS.heart}
         </button>
       </div>
@@ -812,14 +892,14 @@ function renderCompactCard(product) {
         <h4 class="compact-card__title">${product.name}</h4>
         <div class="compact-card__rating">${renderStars(product.rating)} <span class="compact-card__review-count">(${product.reviewCount})</span></div>
         <div class="compact-card__footer">
-          <span class="compact-card__price">$${product.price.toFixed(2)}</span>
-          <button class="compact-card__add" onclick="event.stopPropagation(); Cart.add(${product.id})">+</button>
+          <span class="compact-card__price">${fmtINR(product.price)}</span>
+          <button class="compact-card__add" onclick="event.stopPropagation(); Cart.add(${product.id})" aria-label="Add to cart">+</button>
         </div>
       </div>
     </div>`;
 }
 
-// ─── Render Product Cards (Homepage — Signature Delights) ───
+// ─── Render Home Products (Signature Delights) ───
 function renderHomeProducts() {
   const grid = document.getElementById('home-products-grid');
   if (!grid) return;
@@ -831,10 +911,10 @@ function renderHomeProducts() {
       <div class="product-card__image">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
         <div class="product-card__actions">
-          <button class="product-card__action" data-wishlist="${product.id}" onclick="Wishlist.toggle(${product.id})" title="Wishlist">
+          <button class="product-card__action" data-wishlist="${product.id}" onclick="Wishlist.toggle(${product.id})" title="Add to Wishlist" aria-label="Wishlist ${product.name}">
             ${Wishlist.has(product.id) ? ICONS.heartFill : ICONS.heart}
           </button>
-          <button class="product-card__action" onclick="QuickView.open(${product.id})" title="Quick View">
+          <button class="product-card__action" onclick="QuickView.open(${product.id})" title="Quick View" aria-label="Quick view ${product.name}">
             ${ICONS.eye}
           </button>
         </div>
@@ -845,8 +925,8 @@ function renderHomeProducts() {
         <div class="product-card__rating">${renderStars(product.rating)} <span style="color:var(--text-muted);font-size:var(--fs-xs);">(${product.reviewCount})</span></div>
         <p class="product-card__desc">${product.desc}</p>
         <div class="product-card__footer">
-          <span class="product-card__price">$${product.price.toFixed(2)}</span>
-          <button class="product-card__add-btn" onclick="Cart.add(${product.id})">Add to Cart</button>
+          <span class="product-card__price">${fmtINR(product.price)}</span>
+          <button class="product-card__add-btn" onclick="Cart.add(${product.id})" aria-label="Add ${product.name} to cart">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -868,11 +948,9 @@ function renderHorizontalSection(containerId, filterFn, emptyMsg) {
 function renderBestSellers() {
   renderHorizontalSection('bestsellers-row', p => p.bestseller, 'No bestsellers yet');
 }
-
 function renderTrending() {
   renderHorizontalSection('trending-row', p => p.trending, 'Nothing trending right now');
 }
-
 function renderNewArrivals() {
   renderHorizontalSection('new-arrivals-row', p => p.newArrival, 'Check back soon for new items!');
 }
@@ -885,9 +963,9 @@ function renderOccasionCollections() {
   grid.innerHTML = OCCASIONS.map(occ => {
     const count = PRODUCTS.filter(p => p.occasion && p.occasion.includes(occ.id)).length;
     return `
-      <a href="menu.html?occasion=${occ.id}" class="occasion-card reveal" style="--occ-color: ${occ.color}">
+      <a href="menu.html?occasion=${occ.id}" class="occasion-card reveal" style="--occ-color: ${occ.color}" aria-label="${occ.name} cakes — ${count} items">
         <div class="occasion-card__image">
-          <img src="${occ.image}" alt="${occ.name}" loading="lazy">
+          <img src="${occ.image}" alt="${occ.name} cake" loading="lazy">
           <div class="occasion-card__overlay"></div>
         </div>
         <div class="occasion-card__content">
@@ -961,7 +1039,6 @@ const Recommendations = {
     const viewed = RecentlyViewed.get();
     if (viewed.length === 0) return PRODUCTS.filter(p => p.bestseller).slice(0, 8);
 
-    // Count category/flavor preferences from browsing history
     const prefs = { categories: {}, flavors: {} };
     viewed.forEach(id => {
       const p = PRODUCTS.find(pr => pr.id === id);
@@ -973,7 +1050,6 @@ const Recommendations = {
     const topCategory = Object.entries(prefs.categories).sort((a, b) => b[1] - a[1])[0]?.[0];
     const topFlavor = Object.entries(prefs.flavors).sort((a, b) => b[1] - a[1])[0]?.[0];
 
-    // Score products by relevance
     const viewedSet = new Set(viewed);
     return PRODUCTS
       .filter(p => !viewedSet.has(p.id))
@@ -991,7 +1067,6 @@ const Recommendations = {
   render() {
     const container = document.getElementById('recommendations-row');
     if (!container) return;
-
     const items = this.get();
     container.innerHTML = `<div class="scroll-row">${items.map(renderCompactCard).join('')}</div>`;
   }
@@ -1001,7 +1076,6 @@ const Recommendations = {
 const SurpriseMe = {
   pick() {
     const random = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
-    // Fun animation before revealing
     const btn = document.getElementById('surprise-btn');
     if (btn) {
       btn.classList.add('spinning');
@@ -1023,7 +1097,6 @@ const OccasionFilter = {
     const occasion = params.get('occasion');
     if (!occasion) return;
 
-    // Activate occasion tab if it exists
     const tabs = document.querySelectorAll('.category-tab');
     const occasionTab = document.querySelector(`.category-tab[data-occasion="${occasion}"]`);
     if (occasionTab) {
@@ -1031,8 +1104,6 @@ const OccasionFilter = {
       occasionTab.classList.add('active');
     }
 
-
-    // Filter products by occasion
     if (CategoryFilter.grid) {
       CategoryFilter.currentCategory = 'all';
       CategoryFilter.currentOccasion = occasion;
@@ -1042,9 +1113,10 @@ const OccasionFilter = {
   }
 };
 
-// ─── Advanced Filter Module ───
+// ─── Advanced Filter Module (INR-based) ───
 const AdvancedFilter = {
   isOpen: false,
+  MAX_PRICE: 15000,
 
   toggle() {
     this.isOpen = !this.isOpen;
@@ -1055,7 +1127,7 @@ const AdvancedFilter = {
 
   getState() {
     const flavors = [...document.querySelectorAll('#flavor-filters input:checked')].map(i => i.value);
-    const maxPrice = parseFloat(document.getElementById('price-range')?.value || 150);
+    const maxPrice = parseFloat(document.getElementById('price-range')?.value || this.MAX_PRICE);
     const eggless = document.getElementById('eggless-toggle')?.checked || false;
     const deliveryMax = document.querySelector('input[name="delivery"]:checked')?.value || '';
     const sort = document.getElementById('sort-select')?.value || 'default';
@@ -1063,23 +1135,20 @@ const AdvancedFilter = {
   },
 
   apply() {
-    // Update price label
     const priceSlider = document.getElementById('price-range');
     const priceLabel = document.getElementById('price-range-val');
-    if (priceSlider && priceLabel) priceLabel.textContent = `$${priceSlider.value}`;
+    if (priceSlider && priceLabel) {
+      priceLabel.textContent = fmtINR(priceSlider.value);
+    }
 
-    // Store filters for CategoryFilter to use
     this._state = this.getState();
 
-    // Reset and reload grid
     if (CategoryFilter.grid) {
       CategoryFilter.displayedCount = 0;
       CategoryFilter.loadMore();
     }
 
-    // Update result count
     this.updateResultCount();
-    // Update active chips
     this.updateChips();
   },
 
@@ -1090,7 +1159,7 @@ const AdvancedFilter = {
     if (s.flavors.length > 0) {
       results = results.filter(p => s.flavors.includes(p.flavor));
     }
-    if (s.maxPrice < 150) {
+    if (s.maxPrice < this.MAX_PRICE) {
       results = results.filter(p => p.price <= s.maxPrice);
     }
     if (s.eggless) {
@@ -1103,13 +1172,12 @@ const AdvancedFilter = {
       });
     }
 
-    // Sort
     switch (s.sort) {
-      case 'price-asc': results.sort((a, b) => a.price - b.price); break;
+      case 'price-asc':  results.sort((a, b) => a.price - b.price); break;
       case 'price-desc': results.sort((a, b) => b.price - a.price); break;
-      case 'rating': results.sort((a, b) => b.rating - a.rating); break;
-      case 'popular': results.sort((a, b) => b.reviewCount - a.reviewCount); break;
-      case 'newest': results.sort((a, b) => (b.newArrival ? 1 : 0) - (a.newArrival ? 1 : 0)); break;
+      case 'rating':     results.sort((a, b) => b.rating - a.rating); break;
+      case 'popular':    results.sort((a, b) => b.reviewCount - a.reviewCount); break;
+      case 'newest':     results.sort((a, b) => (b.newArrival ? 1 : 0) - (a.newArrival ? 1 : 0)); break;
     }
 
     return results;
@@ -1134,8 +1202,8 @@ const AdvancedFilter = {
     const chips = [];
 
     s.flavors.forEach(f => chips.push({ label: f, type: 'flavor', value: f }));
-    if (s.maxPrice < 150) chips.push({ label: `Under $${s.maxPrice}`, type: 'price' });
-    if (s.eggless) chips.push({ label: 'Eggless', type: 'eggless' });
+    if (s.maxPrice < this.MAX_PRICE) chips.push({ label: `Under ${fmtINR(s.maxPrice)}`, type: 'price' });
+    if (s.eggless) chips.push({ label: 'Eggless Only', type: 'eggless' });
     if (s.deliveryMax) chips.push({ label: `≤${s.deliveryMax}h delivery`, type: 'delivery' });
 
     if (chips.length === 0) {
@@ -1145,7 +1213,7 @@ const AdvancedFilter = {
 
     wrapper.style.display = 'block';
     container.innerHTML = chips.map(c =>
-      `<span class="filter-chip">${c.label} <button onclick="AdvancedFilter.removeChip('${c.type}','${c.value || ''}')">✕</button></span>`
+      `<span class="filter-chip">${c.label} <button onclick="AdvancedFilter.removeChip('${c.type}','${c.value || ''}')" aria-label="Remove filter">✕</button></span>`
     ).join('');
   },
 
@@ -1155,7 +1223,7 @@ const AdvancedFilter = {
       if (cb) cb.checked = false;
     } else if (type === 'price') {
       const slider = document.getElementById('price-range');
-      if (slider) slider.value = 150;
+      if (slider) slider.value = this.MAX_PRICE;
     } else if (type === 'eggless') {
       const toggle = document.getElementById('eggless-toggle');
       if (toggle) toggle.checked = false;
@@ -1169,7 +1237,7 @@ const AdvancedFilter = {
   clearAll() {
     document.querySelectorAll('#flavor-filters input').forEach(i => i.checked = false);
     const priceSlider = document.getElementById('price-range');
-    if (priceSlider) priceSlider.value = 150;
+    if (priceSlider) priceSlider.value = this.MAX_PRICE;
     const eggless = document.getElementById('eggless-toggle');
     if (eggless) eggless.checked = false;
     const anyDelivery = document.querySelector('input[name="delivery"][value=""]');
@@ -1180,95 +1248,121 @@ const AdvancedFilter = {
   }
 };
 
-// ─── Cake Builder Module ───
+// ─── Cake Builder (INR prices, bug fixed) ───
 const CakeBuilder = {
   step: 0,
   config: { size: null, flavor: null, frosting: null, toppings: [], message: '' },
   options: {
     sizes: [
-      { label: '6 inch (4-6 servings)', price: 25, icon: '🎂' },
-      { label: '8 inch (8-10 servings)', price: 40, icon: '🎂' },
-      { label: '10 inch (12-16 servings)', price: 55, icon: '🎂' },
-      { label: '2-Tier (20-30 servings)', price: 90, icon: '🏰' },
-      { label: '3-Tier (40-50 servings)', price: 150, icon: '🏰' },
+      { label: '6 inch (4–6 servings)', price: 699,  icon: '🎂' },
+      { label: '8 inch (8–10 servings)', price: 1099, icon: '🎂' },
+      { label: '10 inch (12–16 servings)', price: 1499, icon: '🎂' },
+      { label: '2-Tier (20–30 servings)', price: 2499, icon: '🏰' },
+      { label: '3-Tier (40–50 servings)', price: 3999, icon: '🏰' },
     ],
     flavors: [
-      { label: 'Classic Vanilla', price: 0, color: '#FFF8DC' },
-      { label: 'Rich Chocolate', price: 0, color: '#3E2723' },
-      { label: 'Red Velvet', price: 5, color: '#C62828' },
-      { label: 'Lemon Zest', price: 3, color: '#FFF176' },
-      { label: 'Strawberry', price: 5, color: '#E91E63' },
-      { label: 'Coffee Mocha', price: 5, color: '#4E342E' },
-      { label: 'Marble Swirl', price: 3, color: '#8D6E63' },
-      { label: 'Pineapple', price: 3, color: '#FFD54F' },
+      { label: 'Classic Vanilla',   price: 0,   color: '#FFF8DC' },
+      { label: 'Rich Chocolate',    price: 0,   color: '#3E2723' },
+      { label: 'Red Velvet',        price: 150, color: '#C62828' },
+      { label: 'Lemon Zest',        price: 99,  color: '#FFF176' },
+      { label: 'Strawberry',        price: 150, color: '#E91E63' },
+      { label: 'Coffee Mocha',      price: 150, color: '#4E342E' },
+      { label: 'Marble Swirl',      price: 99,  color: '#8D6E63' },
+      { label: 'Mango',             price: 99,  color: '#FFD54F' },
     ],
     frostings: [
-      { label: 'Buttercream', price: 0, color: '#FFFDE7' },
-      { label: 'Cream Cheese', price: 3, color: '#FFF9C4' },
-      { label: 'Chocolate Ganache', price: 5, color: '#3E2723' },
-      { label: 'Fondant', price: 8, color: '#FAFAFA' },
-      { label: 'Whipped Cream', price: 0, color: '#FFFFFF' },
-      { label: 'Caramel Drizzle', price: 4, color: '#FF8F00' },
+      { label: 'Buttercream',         price: 0,   color: '#FFFDE7' },
+      { label: 'Cream Cheese',        price: 99,  color: '#FFF9C4' },
+      { label: 'Chocolate Ganache',   price: 149, color: '#3E2723' },
+      { label: 'Fondant',             price: 249, color: '#FAFAFA' },
+      { label: 'Whipped Cream',       price: 0,   color: '#FFFFFF' },
+      { label: 'Caramel Drizzle',     price: 119, color: '#FF8F00' },
     ],
     toppings: [
-      { label: 'Sprinkles', price: 2, icon: '🌈' },
-      { label: 'Fresh Berries', price: 5, icon: '🍓' },
-      { label: 'Chocolate Shavings', price: 3, icon: '🍫' },
-      { label: 'Edible Flowers', price: 6, icon: '🌸' },
-      { label: 'Gold Leaf', price: 8, icon: '✨' },
-      { label: 'Macarons', price: 7, icon: '🧁' },
-      { label: 'Candied Nuts', price: 4, icon: '🥜' },
-      { label: 'Caramel Popcorn', price: 4, icon: '🍿' },
-      { label: 'Cookie Crumbs', price: 3, icon: '🍪' },
-      { label: 'Birthday Candles', price: 1, icon: '🕯️' },
+      { label: 'Sprinkles',          price: 49,  icon: '🌈' },
+      { label: 'Fresh Berries',      price: 149, icon: '🍓' },
+      { label: 'Chocolate Shavings', price: 99,  icon: '🍫' },
+      { label: 'Edible Flowers',     price: 179, icon: '🌸' },
+      { label: 'Gold Leaf',          price: 249, icon: '✨' },
+      { label: 'Macarons',           price: 199, icon: '🧁' },
+      { label: 'Candied Nuts',       price: 119, icon: '🥜' },
+      { label: 'Caramel Popcorn',    price: 119, icon: '🍿' },
+      { label: 'Cookie Crumbs',      price: 99,  icon: '🍪' },
+      { label: 'Birthday Candles',   price: 29,  icon: '🕯️' },
     ]
   },
 
   getPrice() {
     let total = 0;
-    if (this.config.size !== null) total += this.options.sizes[this.config.size].price;
-    if (this.config.flavor !== null) total += this.options.flavors[this.config.flavor].price;
+    if (this.config.size !== null)    total += this.options.sizes[this.config.size].price;
+    if (this.config.flavor !== null)  total += this.options.flavors[this.config.flavor].price;
     if (this.config.frosting !== null) total += this.options.frostings[this.config.frosting].price;
     this.config.toppings.forEach(i => total += this.options.toppings[i].price);
     return total;
   },
 
+  // ── BUG FIX: was using .active class; CSS overlay requires .open ──
   open() {
     this.step = 0;
     this.config = { size: null, flavor: null, frosting: null, toppings: [], message: '' };
     const overlay = document.getElementById('cake-builder-overlay');
     if (overlay) {
-      overlay.classList.add('active');
+      overlay.classList.add('open');
       document.body.classList.add('no-scroll');
       this.render();
     }
+    if (typeof gtag !== 'undefined') gtag('event', 'cake_customization', { action: 'started' });
   },
 
   close() {
     const overlay = document.getElementById('cake-builder-overlay');
     if (overlay) {
-      overlay.classList.remove('active');
+      overlay.classList.remove('open');
       document.body.classList.remove('no-scroll');
     }
   },
 
-  next() {
-    if (this.step < 4) { this.step++; this.render(); }
-  },
-  prev() {
-    if (this.step > 0) { this.step--; this.render(); }
-  },
+  next() { if (this.step < 4) { this.step++; this.render(); } },
+  prev() { if (this.step > 0) { this.step--; this.render(); } },
 
-  selectSize(i) { this.config.size = i; this.render(); },
-  selectFlavor(i) { this.config.flavor = i; this.render(); },
-  selectFrosting(i) { this.config.frosting = i; this.render(); },
+  selectSize(i)    { this.config.size = i;    this.render(); if (typeof gtag !== 'undefined') gtag('event', 'cake_size_selected', { size: this.options.sizes[i].label }); },
+  selectFlavor(i)  { this.config.flavor = i;  this.render(); if (typeof gtag !== 'undefined') gtag('event', 'cake_flavor_selected', { flavor: this.options.flavors[i].label }); },
+  selectFrosting(i){ this.config.frosting = i; this.render(); },
   toggleTopping(i) {
     const idx = this.config.toppings.indexOf(i);
     if (idx >= 0) this.config.toppings.splice(idx, 1);
     else this.config.toppings.push(i);
     this.render();
+    if (typeof gtag !== 'undefined') gtag('event', 'cake_topping_selected', { topping: this.options.toppings[i].label });
   },
-  setMessage(val) { this.config.message = val; },
+  setMessage(val) {
+    this.config.message = val;
+    if (val && typeof gtag !== 'undefined') gtag('event', 'cake_message_added');
+  },
+
+  getPriceBreakdown() {
+    const lines = [];
+    if (this.config.size !== null) {
+      const s = this.options.sizes[this.config.size];
+      lines.push(`<div class="cb-breakdown__row"><span>Base Cake (${s.label})</span><span>${fmtINR(s.price)}</span></div>`);
+    }
+    if (this.config.flavor !== null) {
+      const f = this.options.flavors[this.config.flavor];
+      if (f.price > 0) lines.push(`<div class="cb-breakdown__row"><span>${f.label} Flavor</span><span>+${fmtINR(f.price)}</span></div>`);
+    }
+    if (this.config.frosting !== null) {
+      const fr = this.options.frostings[this.config.frosting];
+      if (fr.price > 0) lines.push(`<div class="cb-breakdown__row"><span>${fr.label}</span><span>+${fmtINR(fr.price)}</span></div>`);
+    }
+    this.config.toppings.forEach(i => {
+      const t = this.options.toppings[i];
+      lines.push(`<div class="cb-breakdown__row"><span>${t.icon} ${t.label}</span><span>+${fmtINR(t.price)}</span></div>`);
+    });
+    if (this.config.message) {
+      lines.push(`<div class="cb-breakdown__row"><span>💬 Custom Message</span><span>${fmtINR(0)}</span></div>`);
+    }
+    return lines.join('') || '<div class="cb-breakdown__row" style="color:var(--text-muted)">Select options to see breakdown</div>';
+  },
 
   addToCart() {
     if (this.config.size === null || this.config.flavor === null || this.config.frosting === null) {
@@ -1281,27 +1375,38 @@ const CakeBuilder = {
       this.options.frostings[this.config.frosting].label + ' frosting',
       this.config.toppings.length > 0 ? this.config.toppings.map(i => this.options.toppings[i].label).join(', ') : 'No toppings',
       this.config.message ? `"${this.config.message}"` : ''
-    ].filter(Boolean).join(' • ');
+    ].filter(Boolean).join(' · ');
 
-    // Add a custom cake product to cart
+    const price = this.getPrice();
     const customCake = {
-      id: 1000 + Date.now() % 10000,
+      id: 'custom-' + Date.now(),
       name: 'Custom Cake',
       category: 'cakes',
-      price: this.getPrice(),
+      price: price,
       image: 'images/birthday-cake.png',
       desc: summary,
       tag: 'Custom',
+      qty: 1,
     };
 
-    // Push to cart directly
-    const cartItems = JSON.parse(localStorage.getItem('sc-cart') || '[]');
-    cartItems.push({ id: customCake.id, qty: 1, customData: customCake });
-    localStorage.setItem('sc-cart', JSON.stringify(cartItems));
+    // ─── Use Cart object directly so sidebar, badges, and sticky bar all update ───
+    Cart.items.push(customCake);
+    Cart.save();
+    Cart.updateUI();
 
-    Toast.show(`🎉 Custom Cake ($${this.getPrice().toFixed(2)}) added to cart!`, 'success');
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'add_to_cart', {
+        currency: 'INR',
+        value: price,
+        items: [{ item_id: 'custom-cake', item_name: 'Custom Cake', price: price, quantity: 1 }]
+      });
+    }
+
+    Toast.show(`🎉 Custom Cake (${fmtINR(price)}) added to cart!`, 'success');
     this.close();
-    Cart.init(); // refresh cart
+
+    // Open cart sidebar so the user can see the item was added
+    setTimeout(() => Cart.toggleSidebar(), 350);
   },
 
   render() {
@@ -1311,7 +1416,6 @@ const CakeBuilder = {
     const steps = ['Size', 'Flavor', 'Frosting', 'Toppings', 'Message'];
     const price = this.getPrice();
 
-    // Step indicator
     const stepIndicator = `
       <div class="cake-builder__steps">
         ${steps.map((s, i) => `
@@ -1322,11 +1426,10 @@ const CakeBuilder = {
         `).join('<div class="cake-builder__step-line"></div>')}
       </div>`;
 
-    // Price bar
     const priceBar = `
       <div class="cake-builder__price-bar">
-        <span>Your Cake</span>
-        <span class="cake-builder__price">$${price.toFixed(2)}</span>
+        <span>Your Custom Cake</span>
+        <span class="cake-builder__price">${fmtINR(price)}</span>
       </div>`;
 
     let stepContent = '';
@@ -1338,7 +1441,7 @@ const CakeBuilder = {
             <button class="cake-builder__option ${this.config.size === i ? 'selected' : ''}" onclick="CakeBuilder.selectSize(${i})">
               <span class="cake-builder__option-icon">${s.icon}</span>
               <span class="cake-builder__option-label">${s.label}</span>
-              <span class="cake-builder__option-price">$${s.price}</span>
+              <span class="cake-builder__option-price">${fmtINR(s.price)}</span>
             </button>
           `).join('')}
         </div>`;
@@ -1349,7 +1452,7 @@ const CakeBuilder = {
             <button class="cake-builder__option cake-builder__option--color ${this.config.flavor === i ? 'selected' : ''}" onclick="CakeBuilder.selectFlavor(${i})" style="--opt-color: ${f.color}">
               <div class="cake-builder__color-swatch" style="background: ${f.color}"></div>
               <span class="cake-builder__option-label">${f.label}</span>
-              ${f.price > 0 ? `<span class="cake-builder__option-price">+$${f.price}</span>` : '<span class="cake-builder__option-price">Included</span>'}
+              ${f.price > 0 ? `<span class="cake-builder__option-price">+${fmtINR(f.price)}</span>` : '<span class="cake-builder__option-price" style="color:var(--success)">Included</span>'}
             </button>
           `).join('')}
         </div>`;
@@ -1360,7 +1463,7 @@ const CakeBuilder = {
             <button class="cake-builder__option cake-builder__option--color ${this.config.frosting === i ? 'selected' : ''}" onclick="CakeBuilder.selectFrosting(${i})" style="--opt-color: ${f.color}">
               <div class="cake-builder__color-swatch" style="background: ${f.color}"></div>
               <span class="cake-builder__option-label">${f.label}</span>
-              ${f.price > 0 ? `<span class="cake-builder__option-price">+$${f.price}</span>` : '<span class="cake-builder__option-price">Included</span>'}
+              ${f.price > 0 ? `<span class="cake-builder__option-price">+${fmtINR(f.price)}</span>` : '<span class="cake-builder__option-price" style="color:var(--success)">Included</span>'}
             </button>
           `).join('')}
         </div>`;
@@ -1371,45 +1474,52 @@ const CakeBuilder = {
             <button class="cake-builder__option ${this.config.toppings.includes(i) ? 'selected' : ''}" onclick="CakeBuilder.toggleTopping(${i})">
               <span class="cake-builder__option-icon">${t.icon}</span>
               <span class="cake-builder__option-label">${t.label}</span>
-              <span class="cake-builder__option-price">+$${t.price}</span>
+              <span class="cake-builder__option-price">+${fmtINR(t.price)}</span>
             </button>
           `).join('')}
         </div>`;
     } else if (this.step === 4) {
       stepContent = `<h3 class="cake-builder__section-title">Add a Personal Message</h3>
         <div class="cake-builder__message">
-          <textarea class="cake-builder__textarea" placeholder="Happy Birthday, Sarah! 🎂" maxlength="50" oninput="CakeBuilder.setMessage(this.value)">${this.config.message}</textarea>
+          <textarea class="cake-builder__textarea" placeholder="Happy Birthday, Sarah! 🎂" maxlength="50" oninput="CakeBuilder.setMessage(this.value)" aria-label="Custom message">${this.config.message}</textarea>
           <p style="color:var(--text-muted);font-size:var(--fs-xs);margin-top:8px;">${50 - this.config.message.length} characters remaining</p>
         </div>
         <div class="cake-builder__summary">
+          <h4>Price Breakdown</h4>
+          <div class="cb-breakdown">${this.getPriceBreakdown()}</div>
+          <div class="cb-breakdown__row cb-breakdown__total"><span><strong>TOTAL</strong></span><span><strong>${fmtINR(price)}</strong></span></div>
+        </div>
+        <div class="cake-builder__summary" style="margin-top:var(--space-sm);">
           <h4>Your Cake Summary</h4>
-          <ul>
+          <ul style="padding-left:var(--space-md);color:var(--text-secondary);font-size:var(--fs-small);">
             ${this.config.size !== null ? `<li>📏 ${this.options.sizes[this.config.size].label}</li>` : ''}
             ${this.config.flavor !== null ? `<li>🍰 ${this.options.flavors[this.config.flavor].label}</li>` : ''}
             ${this.config.frosting !== null ? `<li>🧁 ${this.options.frostings[this.config.frosting].label}</li>` : ''}
-            ${this.config.toppings.length > 0 ? `<li>✨ ${this.config.toppings.map(i => this.options.toppings[i].label).join(', ')}</li>` : '<li>No toppings</li>'}
+            ${this.config.toppings.length > 0 ? `<li>✨ ${this.config.toppings.map(i => this.options.toppings[i].label).join(', ')}</li>` : '<li style="color:var(--text-muted)">No toppings</li>'}
             ${this.config.message ? `<li>💬 "${this.config.message}"</li>` : ''}
           </ul>
         </div>`;
     }
 
-    // Navigation buttons
     const nav = `
       <div class="cake-builder__nav">
         ${this.step > 0 ? `<button class="btn btn--ghost" onclick="CakeBuilder.prev()">← Back</button>` : '<div></div>'}
         ${this.step < 4
           ? `<button class="btn btn--primary" onclick="CakeBuilder.next()" ${this.step === 0 && this.config.size === null ? 'disabled' : ''} ${this.step === 1 && this.config.flavor === null ? 'disabled' : ''} ${this.step === 2 && this.config.frosting === null ? 'disabled' : ''}>Next →</button>`
-          : `<button class="btn btn--primary" onclick="CakeBuilder.addToCart()">🛒 Add to Cart — $${price.toFixed(2)}</button>`
+          : `<button class="btn btn--primary" onclick="CakeBuilder.addToCart()">🛒 Add to Cart — ${fmtINR(price)}</button>`
         }
       </div>`;
 
-    content.innerHTML = stepIndicator + priceBar + stepContent + nav;
+    const closeBtn = `<button class="modal__close" onclick="CakeBuilder.close()" aria-label="Close cake builder">✕</button>`;
+
+    content.innerHTML = closeBtn + stepIndicator + priceBar + stepContent + nav;
   }
 };
 
-// ─── Review System ───
+// ─── Review System (DEMO DATA — clearly labeled) ───
 const ReviewSystem = {
-  // Mock reviews per product
+  // ⚠️ DEMO: These are sample/mock reviews for portfolio demonstration purposes.
+  // Real customer reviews should replace this data before going live.
   reviews: {},
 
   generateMockReviews(productId) {
@@ -1418,16 +1528,17 @@ const ReviewSystem = {
     const product = PRODUCTS.find(p => p.id === productId);
     if (!product) return [];
 
-    const names = ['Sarah J.', 'Mike C.', 'Emily D.', 'Raj P.', 'Lisa M.', 'Alex K.', 'Priya S.', 'Tom W.', 'Anna L.', 'David R.'];
+    // Sample reviewer initials — DEMO CONTENT, not real customers
+    const names = ['A.K.', 'R.S.', 'P.M.', 'S.D.', 'V.G.', 'N.J.', 'M.R.', 'T.P.', 'L.C.', 'D.B.'];
     const comments = {
-      5: ['Absolutely incredible!', 'Best I\'ve ever had!', 'Will order again!', 'Perfect for the occasion!', 'Exceeded expectations!'],
-      4: ['Really good, loved it!', 'Great taste and quality.', 'Would recommend to friends.', 'Very fresh and delicious.'],
-      3: ['Decent, nothing special.', 'Good but a bit pricey.', 'Average taste.'],
-      2: ['Could be better.', 'Not what I expected.'],
-      1: ['Disappointing.']
+      5: ['Absolutely delicious! Loved it.', 'Best I\'ve had in a long time!', 'Will definitely order again!', 'Perfect for the occasion!', 'Exceeded all expectations!'],
+      4: ['Really good taste and quality.', 'Great cake, would recommend.', 'Very fresh and delicious.', 'Loved it, will order again.'],
+      3: ['Good but could be sweeter.', 'Decent, nothing extraordinary.', 'Average taste for the price.'],
+      2: ['Expected better quality.', 'Not what I was hoping for.'],
+      1: ['Disappointed with this order.']
     };
 
-    const count = Math.min(product.reviewCount, 8);
+    const count = Math.min(product.reviewCount, 6);
     const reviews = [];
 
     for (let i = 0; i < count; i++) {
@@ -1438,8 +1549,9 @@ const ReviewSystem = {
         name: names[i % names.length],
         rating,
         text: pool[Math.floor(Math.random() * pool.length)],
-        date: new Date(Date.now() - (i * 7 + Math.random() * 30) * 86400000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        date: new Date(Date.now() - (i * 7 + Math.random() * 30) * 86400000).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
         verified: Math.random() > 0.3,
+        isDemo: true,
       });
     }
 
@@ -1488,7 +1600,7 @@ const ReviewSystem = {
         <div class="review-card__header">
           <div class="review-card__avatar">${r.name.charAt(0)}</div>
           <div>
-            <span class="review-card__name">${r.name} ${r.verified ? '<span class="review-card__badge">✓ Verified</span>' : ''}</span>
+            <span class="review-card__name">${r.name} ${r.verified ? '<span class="review-card__badge">✓ Verified</span>' : ''} <span class="review-card__demo-label">[Sample]</span></span>
             <div class="review-card__meta">${renderStars(r.rating)} · ${r.date}</div>
           </div>
         </div>
@@ -1498,7 +1610,7 @@ const ReviewSystem = {
   }
 };
 
-// ─── Initialize Features ───
+// ─── Initialize All Features ───
 document.addEventListener('DOMContentLoaded', () => {
   Cart.init();
   Wishlist.init();
@@ -1523,6 +1635,14 @@ document.addEventListener('DOMContentLoaded', () => {
     RecentlyViewed.add(id);
     origOpen(id);
   };
+
+  // Cake builder close on overlay click
+  const cakeBuilderOverlay = document.getElementById('cake-builder-overlay');
+  if (cakeBuilderOverlay) {
+    cakeBuilderOverlay.addEventListener('click', (e) => {
+      if (e.target === cakeBuilderOverlay) CakeBuilder.close();
+    });
+  }
 
   // Re-init scroll reveal for dynamically rendered products
   setTimeout(() => {
