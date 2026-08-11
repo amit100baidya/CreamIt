@@ -4,22 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Cream It Bakery — Artisan cakes, pastries, and breads handcrafted daily with the finest ingredients. Order online for pickup or delivery.">
-    <meta name="keywords" content="bakery, cakes, pastries, bread, cupcakes, artisan, fresh, order online">
+    <meta name="description" content="Cream It Bakery — Artisan cakes, pastries, and breads handcrafted daily with the finest ingredients. Order online for pickup or delivery.">
+    <meta name="keywords" content="bakery, cakes, pastries, bread, cupcakes, artisan, custom cake, eggless cake, order online">
     <title>Cream It Bakery — Freshly Baked Happiness Every Day</title>
+    <link rel="canonical" href="https://amit100baidya.github.io/CreamIt/">
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amit100baidya.github.io/CreamIt/">
+    <meta property="og:title" content="Cream It Bakery — Freshly Baked Happiness Every Day">
+    <meta property="og:description" content="Artisan cakes, pastries, and breads handcrafted daily. Custom cakes for every occasion — birthday, wedding, anniversary and more.">
+    <meta property="og:image" content="https://amit100baidya.github.io/CreamIt/images/hero.png">
+    <meta property="og:locale" content="en_IN">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cream It Bakery — Freshly Baked Happiness Every Day">
+    <meta name="twitter:description" content="Artisan cakes, pastries & breads. Custom cakes for birthdays, weddings & every celebration.">
+    <meta name="twitter:image" content="https://amit100baidya.github.io/CreamIt/images/hero.png">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Cream It Bakery",
+      "description": "Artisan cakes, pastries, and breads handcrafted daily with the finest ingredients.",
+      "url": "https://amit100baidya.github.io/CreamIt/",
+      "logo": "https://amit100baidya.github.io/CreamIt/images/hero.png",
+      "image": "https://amit100baidya.github.io/CreamIt/images/hero.png",
+      "priceRange": "₹₹",
+      "servesCuisine": "Bakery",
+      "foundingDate": "2020",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "19:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "18:00" }
+      ],
+      "hasMenu": "https://amit100baidya.github.io/CreamIt/menu.html"
+    }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCSY62Y8E"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-KYCSY62Y8E');
     </script>
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
 
 <body>
@@ -283,18 +312,16 @@
                     <div class="testimonial-card">
                         <div class="testimonial-card__inner">
                             <span class="testimonial-card__quote">"</span>
-                            <p class="testimonial-card__text">Their croissants are perfection — flaky, buttery, and
-                                absolutely divine. I drive 30 minutes just to get my morning fix!</p>
-                            <p class="testimonial-card__author">Mike Chen</p>
-                            <p class="testimonial-card__role">Food Blogger</p>
+                            <p class="testimonial-card__text">Their croissants are perfection — flaky, buttery, and absolutely divine. I visit every single morning without fail!</p>
+                            <p class="testimonial-card__author">M.C. <span class="demo-label">[Sample Review]</span></p>
+                            <p class="testimonial-card__role">Regular Customer</p>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-card__inner">
                             <span class="testimonial-card__quote">"</span>
-                            <p class="testimonial-card__text">Our wedding cake was a masterpiece! The team went above
-                                and beyond to create something truly magical for our special day.</p>
-                            <p class="testimonial-card__author">Emily Davis</p>
+                            <p class="testimonial-card__text">Our wedding cake was a masterpiece! The team went above and beyond to create something truly magical for our special day.</p>
+                            <p class="testimonial-card__author">E.D. <span class="demo-label">[Sample Review]</span></p>
                             <p class="testimonial-card__role">Bride, 2024</p>
                         </div>
                     </div>
@@ -334,6 +361,7 @@
                         <li><a href="menu.html">Menu</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -341,8 +369,7 @@
                     <ul class="footer__links">
                         <li>Mon–Fri: 7AM – 7PM</li>
                         <li>Sat–Sun: 8AM – 6PM</li>
-                        <li style="margin-top: var(--space-sm);">📍 123 Bakery Street</li>
-                        <li>Sweet City, SC 12345</li>
+                        <li style="margin-top: var(--space-sm);font-size:var(--fs-xs);color:var(--text-muted);">📍 Location available on request</li>
                     </ul>
                 </div>
                 <div>
@@ -358,8 +385,8 @@
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 Cream It Bakery. All rights reserved.</p>
                 <div class="footer__legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -415,10 +442,9 @@
         <div class="cart-sidebar__footer">
             <div class="cart-sidebar__total">
                 <span class="cart-sidebar__total-label">Total</span>
-                <span class="cart-sidebar__total-value">$0.00</span>
+                <span class="cart-sidebar__total-value">₹0</span>
             </div>
-            <button class="btn btn--primary" style="width: 100%;"
-                onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
+            <button class="btn btn--primary" style="width: 100%;" onclick="Toast.show('Checkout coming soon! 🛒', 'info')">Checkout</button>
         </div>
     </div>
 
@@ -492,14 +518,28 @@
                 <span>🛒</span>
                 <span class="sticky-cart__count">0 items</span>
                 <span>•</span>
-                <span class="sticky-cart__total">$0.00</span>
+                <span class="sticky-cart__total">₹0</span>
             </div>
             <button class="btn btn--primary btn--sm" onclick="Cart.toggleSidebar()">View Cart</button>
         </div>
     </div>
 
+    <!-- ═══ Mobile CTA Bar ═══ -->
+    <div class="mobile-cta" id="mobile-cta" aria-label="Mobile quick actions">
+        <a href="menu.html" class="mobile-cta__btn" aria-label="Menu">🎂<span>Menu</span></a>
+        <button class="mobile-cta__btn" id="mobile-search-btn" aria-label="Search">🔍<span>Search</span></button>
+        <button class="mobile-cta__btn mobile-cta__cart" onclick="Cart.toggleSidebar()" aria-label="Cart">
+            🛒<span>Cart</span>
+            <span class="mobile-cta__cart-count" aria-live="polite"></span>
+        </button>
+        <a href="menu.html" class="mobile-cta__btn mobile-cta__order" aria-label="Order Now">✨<span>Order</span></a>
+    </div>
+
     <script src="app.js"></script>
     <script src="features.js"></script>
+    <script>
+        document.getElementById('mobile-search-btn')?.addEventListener('click', () => Search.open());
+    </script>
 </body>
 
 </html>
