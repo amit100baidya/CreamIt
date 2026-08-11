@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — CREAM IT Bakery</title>
+    <meta name="description" content="Thank you for reaching out to CREAM IT Bakery! We'll get back to you within 24 hours.">
+    <meta name="robots" content="noindex">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCSY62Y8E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KYCSY62Y8E');
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .thankyou-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--bg-primary);
+        }
+        .thankyou__icon {
+            font-size: clamp(4rem, 12vw, 8rem);
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            margin-bottom: var(--space-lg);
+        }
+        @keyframes popIn {
+            0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .thankyou__checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            font-size: 2.5rem;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+            box-shadow: 0 10px 40px rgba(var(--accent-rgb, 180, 120, 60), 0.4);
+        }
+        .thankyou__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
+            margin: 0 0 var(--space-sm);
+            animation: fadeUp 0.5s ease 0.4s both;
+        }
+        .thankyou__subtitle {
+            font-size: var(--fs-body);
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.7;
+            animation: fadeUp 0.5s ease 0.5s both;
+        }
+        @keyframes fadeUp {
+            0%   { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .thankyou__info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-lg) var(--space-xl);
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto var(--space-xl);
+            animation: fadeUp 0.5s ease 0.6s both;
+        }
+        .thankyou__info-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+            font-size: var(--fs-small);
+            color: var(--text-secondary);
+        }
+        .thankyou__info-row:last-child { border-bottom: none; }
+        .thankyou__info-icon { font-size: 1.3rem; flex-shrink: 0; }
+        .thankyou__actions {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeUp 0.5s ease 0.7s both;
+        }
+        .thankyou__confetti {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .confetti-piece {
+            position: absolute;
+            top: -20px;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+            to { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti -->
+    <div class="thankyou__confetti" id="confetti-container" aria-hidden="true"></div>
+
+    <!-- ═══ Navbar ═══ -->
+    <header class="nav nav--scrolled" id="main-nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo-icon">🍰</span>
+                <span class="nav__logo-text">Cream It</span>
+            </a>
+            <nav class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="menu.html" class="nav__link">Menu</a></li>
+                    <li><a href="about.html" class="nav__link">About</a></li>
+                    <li><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav__actions">
+                <button class="nav__action-btn" id="cart-toggle" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav__badge" id="cart-count">0</span>
+                </button>
+                <button class="nav__action-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/></svg>
+                </button>
+                <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ Thank You Content ═══ -->
+    <main class="thankyou-page" id="main-content">
+        <div class="thankyou__icon" aria-hidden="true">🎂</div>
+        <div class="thankyou__checkmark" aria-hidden="true">✓</div>
+        <h1 class="thankyou__title">Thank You!</h1>
+        <p class="thankyou__subtitle" id="thankyou-message">Your sweet request has been received. We're excited to create something special for you!</p>
+
+        <div class="thankyou__info-box">
+            <div class="thankyou__info-row">
+                <span class="thankyou__info-icon">⏰</span>
+                <span>We typically respond within <strong>24 hours</strong> on business days.</span>
+            </div>
+            <div class="thankyou__info-row">
+                <span class="thankyou__info-icon">📧</span>
+                <span>Check your inbox for a confirmation — and our spam folder just in case!</span>
+            </div>
+            <div class="thankyou__info-row">
+                <span class="thankyou__info-icon">💬</span>
+                <span>For urgent orders, please mention it in your message and we'll prioritise.</span>
+            </div>
+        </div>
+
+        <div class="thankyou__actions">
+            <a href="index.html" class="btn btn--primary btn--lg">🏠 Back to Home</a>
+            <a href="menu.html" class="btn btn--secondary btn--lg">🎂 Continue Shopping</a>
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__header">
+            <h3 class="cart-sidebar__title">Your Cart 🛒</h3>
+            <button class="cart-sidebar__close nav__action-btn" onclick="Cart.toggleSidebar()">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="cart-sidebar__items">
+            <div class="cart-empty"><div class="cart-empty__icon">🛒</div><p>Your cart is empty</p></div>
+        </div>
+        <div class="cart-sidebar__footer">
+            <div class="cart-sidebar__total">
+                <span class="cart-sidebar__total-label">Total</span>
+                <span class="cart-sidebar__total-value">₹0</span>
+            </div>
+            <button class="btn btn--primary" style="width:100%;" onclick="Toast.show('Checkout coming soon!', 'info')">Checkout</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="features.js"></script>
+    <script>
+        // Read URL param for custom message
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('type');
+        const msgEl = document.getElementById('thankyou-message');
+        if (type === 'newsletter') {
+            msgEl.textContent = "You're now subscribed! Get ready for exclusive deals, new flavors, and bakery news delivered fresh to your inbox.";
+        } else if (type === 'order') {
+            msgEl.textContent = "Your order request has been received! Our team will review it and confirm the details with you shortly.";
+        }
+
+        // Confetti
+        function spawnConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#B47A3C', '#E8C4A0', '#8B4513', '#F4E1C8', '#FF6B9D', '#FFD700'];
+            for (let i = 0; i < 60; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    width: ${6 + Math.random() * 8}px;
+                    height: ${6 + Math.random() * 8}px;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                    animation-duration: ${1.5 + Math.random() * 2}s;
+                    animation-delay: ${Math.random() * 1}s;
+                `;
+                container.appendChild(piece);
+            }
+        }
+        spawnConfetti();
+
+        // GA4
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submission_complete', { form_type: type || 'contact' });
+        }
+    </script>
+</body>
+</html>
