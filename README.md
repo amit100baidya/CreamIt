@@ -1,193 +1,106 @@
-# 🥐 Cream It
+# 🍰 CREAM IT
 
-A modern, responsive bakery website designed to deliver a premium online experience for customers. Cream It combines elegant design, smooth animations, and interactive features to create an engaging digital storefront for cakes, pastries, breads, and desserts.
+> **Freshly Baked. Beautifully Crafted. Made for Every Occasion.**
+
+CREAM IT is a modern, responsive bakery e-commerce website designed to provide a premium digital experience for discovering cakes, desserts, pastries, and customized creations.
+
+The project combines an elegant bakery-inspired interface with interactive shopping features, cake customization, occasion-based discovery, smart search, wishlist functionality, product recommendations, and Google Analytics integration.
+
+🌐 **Live Website:** https://amit100baidya.github.io/CreamIt/
+
+---
 
 ## 🌟 Overview
 
-Cream It is built with a focus on clean UI, exceptional user experience, and responsive design. Inspired by leading bakery platforms while maintaining its own unique identity, the website showcases bakery products through beautiful visuals, interactive components, and modern web technologies.
+CREAM IT is designed as a modern bakery storefront rather than a simple static website.
+
+The platform focuses on:
+
+- 🍰 Product discovery
+- 🎂 Cake customization
+- 🎉 Occasion-based shopping
+- 🛒 Interactive cart experience
+- ❤️ Wishlist and recently viewed products
+- 🔍 Smart search and filtering
+- 📊 Website analytics
+- 📱 Responsive mobile experience
+- ♿ Accessibility and usability
+- 🔎 SEO-friendly structure
+
+The project is built with a clean frontend architecture and deployed using **GitHub Pages**.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-### 🏠 Home Page
-- Modern fullscreen hero section
-- High-quality bakery imagery/video
-- Animated call-to-action buttons
-- Smooth scrolling experience
+## 🏠 Modern Homepage
 
-### 🍰 Product Showcase
-- Beautiful product cards
-- Product categories
-- Best Sellers section
+- Premium bakery hero section
+- Strong call-to-action buttons
+- Best Sellers
 - New Arrivals
-- Seasonal Collections
 - Trending Products
-- Quick View functionality
+- Seasonal Collections
+- Featured Occasions
+- Product recommendations
+- Recently Viewed Products
+- Bakery gallery
+- Customer testimonials
+- Smooth scrolling and animations
 
-### 🎂 Cake Customization
-- Customize cake size
-- Select flavor
-- Choose frosting
-- Add toppings
-- Personalized cake message
-- Dynamic price updates
-- Live preview
+---
 
-### 🎉 Occasion Collections
-- Birthday Cakes
-- Anniversary Cakes
-- Wedding Cakes
-- Baby Shower Cakes
-- Graduation Cakes
-- Corporate Cakes
-- Valentine's Collection
-- Christmas Collection
-- Festival Specials
+## 🍰 Product Discovery
 
-### 🔍 Smart Search & Filters
-- Instant product search
-- Live search suggestions
-- Category filtering
-- Price filtering
-- Flavor filtering
-- Egg/Eggless filter
-- Occasion filter
+Explore bakery products through organized collections and interactive product cards.
 
-### ❤️ Customer Experience
-- Wishlist
-- Recently Viewed
-- Customer Reviews
+### Categories
+
+- Cakes
+- Cupcakes
+- Pastries
+- Brownies
+- Cookies
+- Breads
+- Desserts
+- Gift Hampers
+
+### Product Features
+
+- Product cards
+- Product details
+- Quick View
 - Ratings
-- Product Recommendations
-- Surprise Me Feature
-
-### 🚚 Delivery Features
-- Delivery Availability Checker
-- Same-Day Delivery Badge
-- Delivery Time Estimates
-- Mock Order Tracking
-
-### 📸 Media & Gallery
-- Bakery Gallery
-- Product Gallery
-- Video Showcase
-- Behind-the-scenes Section
-- Meet Our Chefs
-
-### 🎁 Promotions
-- Flash Sale Countdown
-- Discount Banners
-- Seasonal Offers
-- Loyalty Rewards (UI)
-- Newsletter Subscription
-
-### 📱 Modern UI Features
-- Fully Responsive Design
-- Dark / Light Mode
-- Glassmorphism Navigation
-- Smooth Animations
-- Hover Effects
-- Micro Interactions
-- Lazy Loading
-- Skeleton Loaders
-- Parallax Sections
-
-### ♿ Accessibility
-- Keyboard Navigation
-- Semantic HTML
-- Accessible Forms
-- Responsive Layout
-- Optimized Performance
+- Wishlist
+- Add to Cart
+- Product comparison
+- Recently viewed products
+- Recommendations
 
 ---
 
-## 🛠️ Tech Stack
+## 🎂 Custom Cake Builder
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Responsive Design
-- CSS Animations
-- Flexbox
-- CSS Grid
+Create a personalized cake through an interactive customization experience.
 
----
+Customers can select:
 
-## 📂 Project Structure
+- Cake size
+- Flavor
+- Frosting
+- Filling
+- Toppings
+- Candles
+- Personalized message
 
-```
-Sweet-Crumbs-Bakery/
-│
-├── index.html
-├── menu.html
-├── about.html
-├── contact.html
-│
-├── css/
-│   ├── style.css
-│   ├── responsive.css
-│   └── animations.css
-│
-├── js/
-│   ├── main.js
-│   ├── slider.js
-│   ├── cart.js
-│   ├── search.js
-│   └── customizer.js
-│
-├── assets/
-│   ├── images/
-│   ├── videos/
-│   ├── icons/
-│   └── fonts/
-│
-└── README.md
-```
+The system dynamically updates the cake configuration and pricing.
 
----
+### Example
 
-## 🎨 Design Highlights
-
-- Premium bakery-inspired color palette
-- Elegant typography
-- Rounded modern UI
-- Interactive product cards
-- Luxury-inspired layouts
-- Smooth page transitions
-- Mobile-first approach
-
----
-
-## 🚀 Future Improvements
-
-- User Authentication
-- Shopping Cart Backend
-- Payment Gateway Integration
-- Database Integration
-- Admin Dashboard
-- Order Management
-- AI Cake Recommendation
-- Live Order Tracking
-- Customer Accounts
-- Multi-language Support
-
----
-
-## 📸 Screenshots
-
-Add screenshots of the homepage, menu, cake customization, gallery, and responsive layouts here.
-
----
-
-## 📄 License
-
-This project is intended for educational and portfolio purposes.
-
----
-
-## 👨‍💻 Author
-
-Developed by **Amit Baidya**
-
-B.Tech Computer Science Engineering
+```text
+Base Cake          ₹999
+Extra Filling      ₹100
+Premium Topping    ₹80
+Custom Message       ₹0
+-------------------------
+Total             ₹1,179
